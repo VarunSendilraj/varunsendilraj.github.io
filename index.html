@@ -3,64 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <title>Varun Sendilraj</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: #fff;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content {
+            max-width: 50%;
+            padding-right: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .image-container {
+            width: 40%;
+            height: 0;
+            padding-bottom: 40%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pixel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image5.png');
+            background-repeat: repeat;
+        }
+
+        .social-icons {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .social-icons a {
+            margin-bottom: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Glitch effect styles */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #888;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #ccc, 2px 2px #888;
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(86px, 9999px, 14px, 0);
+            }
+            10% {
+                clip: rect(63px, 9999px, 68px, 0);
+            }
+            20% {
+                clip: rect(62px, 9999px, 51px, 0);
+            }
+            30% {
+                clip: rect(88px, 9999px, 14px, 0);
+            }
+            40% {
+                clip: rect(5px, 9999px, 63px, 0);
+            }
+            50% {
+                clip: rect(99px, 9999px, 90px, 0);
+            }
+            60% {
+                clip: rect(20px, 9999px, 92px, 0);
+            }
+            70% {
+                clip: rect(54px, 9999px, 43px, 0);
+            }
+            80% {
+                clip: rect(86px, 9999px, 98px, 0);
+            }
+            90% {
+                clip: rect(44px, 9999px, 2px, 0);
+            }
+            100% {
+                clip: rect(71px, 9999px, 89px, 0);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(20px, 9999px, 92px, 0);
+            }
+            10% {
+                clip: rect(54px, 9999px, 43px, 0);
+            }
+            20% {
+                clip: rect(86px, 9999px, 98px, 0);
+            }
+            30% {
+                clip: rect(44px, 9999px, 2px, 0);
+            }
+            40% {
+                clip: rect(71px, 9999px, 89px, 0);
+            }
+            50% {
+                clip: rect(7px, 9999px, 42px, 0);
+            }
+            60% {
+                clip: rect(86px, 9999px, 14px, 0);
+            }
+            70% {
+                clip: rect(63px, 9999px, 68px, 0);
+            }
+            80% {
+                clip: rect(62px, 9999px, 51px, 0);
+            }
+            90% {
+                clip: rect(88px, 9999px, 14px, 0);
+            }
+            100% {
+                clip: rect(5px, 9999px, 63px, 0);
+            }
+        }
+
+        /* Scanline effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            z-index: 2;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* Background glitch effect */
+        .background-glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .background-glitch::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            animation: bg-glitch 2s linear infinite;
+        }
+
+        @keyframes bg-glitch {
+            0% {
+                background-position: 0 0, 0 0;
+                filter: hue-rotate(0deg);
+            }
+            10% {
+                background-position: -1px 0, 0 0;
+            }
+            20% {
+                background-position: 1px 0, 0 0;
+            }
+            30% {
+                background-position: 0 0, 0 0;
+            }
+            40% {
+                background-position: 0 -1px, 0 0;
+                filter: hue-rotate(20deg);
+            }
+            50% {
+                background-position: 0 1px, 0 0;
+            }
+            60% {
+                background-position: 1px 0, 0 0;
+            }
+            70% {
+                background-position: -1px 0, 0 0;
+            }
+            80% {
+                background-position: 0 0, 0 0;
+                filter: hue-rotate(-20deg);
+            }
+            90% {
+                background-position: 0 1px, 0 0;
+            }
+            100% {
+                background-position: 0 0, 0 0;
+                filter: hue-rotate(0deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 40px;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+
+            main {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .content, .image-container {
+                max-width: 100%;
+                width: 100%;
+                padding-right: 0;
+            }
+
+            .image-container {
+                margin-top: 40px;
+                width: 100%;
+                height: auto;
+
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .social-icons {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Your Name</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="work.html">Work</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="resume.html">Resume</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="thoughts.html">Personal Thoughts</a>
-                    </li>
+    <div class="background-glitch"></div>
+    <div class="scanline"></div>
+    <div class="container">
+        <header>
+            <div class="logo glitch" data-text="Varun Sendilraj">Varun Sendilraj</div>
+            <nav>
+                <ul>
+                    <li><a href="#about" class="glitch" data-text="ABOUT">ABOUT</a></li>
+                    <li><a href="#projects" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
+                    <li><a href="#essays" class="glitch" data-text="ESSAYS">ESSAYS</a></li>
                 </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="content">
+                <h1 class="glitch" data-text="HI I'M VARUN...">HI I'M VARUN...</h1>
+                <p class="glitch" data-text="I'M A 20 YEAR OLD AI TINKERER BASED IN ATL,">I'M A 20 YEAR OLD AI TINKERER BASED IN ATL,</p>
+                <p class="glitch" data-text="CURRENTLY STUDYING BME + CS AT GATECH">CURRENTLY STUDYING BME + CS AT GATECH</p>
+                <p class="glitch" data-text="<PURPOSE>">&lt;PURPOSE&gt;</p>
+                <p class="glitch" data-text="CURRENTLY:">CURRENTLY:</p>
             </div>
-        </div>
-    </nav>
+            <div class="image-container">
 
-    <main class="container mt-5">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h1 class="mb-4">Welcome to My Personal Website</h1>
-                <p class="lead">
-                    Hello! I'm [Your Name], a [Your Profession] passionate about [Your Interests].
-                    This website showcases my work, experiences, and thoughts. Feel free to explore!
-                </p>
-                <div class="mt-5">
-                    <a href="about.html" class="btn btn-primary me-2">Learn More About Me</a>
-                    <a href="work.html" class="btn btn-outline-primary">View My Work</a>
-                </div>
-            </div>
-        </div>
-    </main>
+                <img src="ima" alt="Description of image">
 
-    <footer class="bg-light mt-5 py-3">
-        <div class="container text-center">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-github"></i></a>
-            </div>
         </div>
-    </footer>
+        </main>
+        <div class="social-icons">x
+            <a href="#" id="twitter" class="glitch" data-text="X">X</a>
+            <a href="#" id="linkedin" class="glitch" data-text="X">X</a>
+            <a href="#" id="github" class="glitch" data-text="X">X</a>
+        </div>
+    </div>
+    <script>
+        function createPixelImage() {
+            const imageContainer = document.getElementById('pixelImage');
+            const pixelSize = 10;
+            const width = imageContainer.offsetWidth;
+            const height = imageContainer.offsetHeight;
+            const cols = Math.floor(width / pixelSize);
+            const rows = Math.floor(height / pixelSize);
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+            imageContainer.innerHTML = ''; // Clear existing pixels
+
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    const pixel = document.createElement('div');
+                    pixel.style.position = 'absolute';
+                    pixel.style.left = `${x * pixelSize}px`;
+                    pixel.style.top = `${y * pixelSize}px`;
+                    pixel.style.width = `${pixelSize}px`;
+                    pixel.style.height = `${pixelSize}px`;
+                    pixel.style.backgroundColor = getPixelColor(x, y);
+                    imageContainer.appendChild(pixel);
+                }
+            }
+        }
+
+        function getPixelColor(x, y) {
+            // This is a placeholder function. You should implement your own logic
+            // to create the pixel art image of the person in the design.
+            const shade = Math.floor(Math.random() * 256);
+            return `rgb(${shade}, ${shade}, ${shade})`;
+        }
+
+        window.addEventListener('load', createPixelImage);
+        window.addEventListener('resize', createPixelImage);
+
+        // Glitch effect for text
+        function applyGlitchEffect() {
+            const glitchElements = document.querySelectorAll('.glitch');
+            glitchElements.forEach(element => {
+                const originalText = element.textContent;
+                element.setAttribute('data-text', originalText);
+            });
+        }
+
+        applyGlitchEffect();
+    </script>
 </body>
 </html>
