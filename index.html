@@ -78,10 +78,61 @@
 
         .image-container {
             width: 40%;
-            height: 0;
-            padding-bottom: 40%;
+            aspect-ratio: 1 / 1;
             position: relative;
             overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-glitch {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-glitch img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .image-glitch img:nth-child(2) {
+            color: #0ff;
+            left: 2px;
+        }
+
+        .image-glitch img:nth-child(3) {
+            color: #f0f;
+            left: -2px;
+        }
+
+        .image-glitch:hover img:nth-child(2),
+        .image-glitch:hover img:nth-child(3) {
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip-path: inset(80% 0 0 0); }
+            10% { clip-path: inset(10% 0 70% 0); }
+            20% { clip-path: inset(60% 0 20% 0); }
+            30% { clip-path: inset(30% 0 40% 0); }
+            40% { clip-path: inset(50% 0 30% 0); }
+            50% { clip-path: inset(20% 0 60% 0); }
+            60% { clip-path: inset(70% 0 10% 0); }
+            70% { clip-path: inset(40% 0 50% 0); }
+            80% { clip-path: inset(0 0 80% 0); }
+            90% { clip-path: inset(90% 0 0 0); }
+            100% { clip-path: inset(10% 0 90% 0); }
         }
 
         .pixel-image {
@@ -129,13 +180,13 @@
             left: 2px;
             text-shadow: -2px 0 #888;
             clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
+            animation: glitch-anim 2s infinite linear alternate-reverse;
         }
 
         .glitch::after {
             left: -2px;
             text-shadow: -2px 0 #ccc, 2px 2px #888;
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
+            animation: glitch-anim2 2s infinite linear alternate-reverse;
         }
 
         @keyframes glitch-anim {
@@ -345,6 +396,21 @@
                 right: 20px;
             }
         }
+
+        .pixel-icon {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 24px;
+            text-decoration: none;
+            color: #fff;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px #000;
+        }
+
+        .pixel-icon:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -355,7 +421,7 @@
             <div class="logo glitch" data-text="Varun Sendilraj">Varun Sendilraj</div>
             <nav>
                 <ul>
-                    <li><a href="#about" class="glitch" data-text="ABOUT">ABOUT</a></li>
+                    <li><a href="about.html" class="glitch" data-text="ABOUT">ABOUT</a></li>
                     <li><a href="#projects" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
                     <li><a href="#essays" class="glitch" data-text="ESSAYS">ESSAYS</a></li>
                 </ul>
@@ -370,15 +436,17 @@
                 <p class="glitch" data-text="CURRENTLY:">CURRENTLY:</p>
             </div>
             <div class="image-container">
-
-                <img src="ima" alt="Description of image">
-
-        </div>
+                <div class="image-glitch">
+                    <img src="image 6.png" alt="Varun Sendilraj">
+                    <img src="image 5.png" alt="Varun Sendilraj">
+                    <img src="image 6.png" alt="Varun Sendilraj">
+                </div>
+            </div>
         </main>
-        <div class="social-icons">x
-            <a href="#" id="twitter" class="glitch" data-text="X">X</a>
-            <a href="#" id="linkedin" class="glitch" data-text="X">X</a>
-            <a href="#" id="github" class="glitch" data-text="X">X</a>
+        <div class="social-icons">
+            <a href="#" id="twitter" class="glitch pixel-icon" data-text="󰕄">󰕄</a>
+            <a href="#" id="linkedin" class="glitch pixel-icon" data-text="󰌻">󰌻</a>
+            <a href="#" id="github" class="glitch pixel-icon" data-text="󰊤">󰊤</a>
         </div>
     </div>
     <script>

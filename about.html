@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Varun Sendilraj</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: #fff;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        /* Glitch effect styles */
+        
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: visible;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .project-card:hover{ 
+            transform: scale(1.05);
+        }
+
+        .card-frame {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ufo-icon {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 60px;
+            height: 60px;
+            z-index: 3;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .ufo-icon {
+            transform: translateY(5px) rotate(5deg);
+        }
+
+        .card-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content img {
+            max-width: 90%;
+            max-height: 60%;
+            object-fit: contain;
+        }
+
+        .card-content p {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        /* Popup styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .popup-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .popup-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .popup-card-frame {
+            width: 100%;
+            height: auto;
+        }
+
+        .popup-inner-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: #000;
+        }
+
+        .popup-header, .popup-body, .popup-navigation {
+            z-index: 1;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .popup-title {
+            font-size: 24px;
+            color: #000;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1010;
+        }
+
+        .popup-body {
+            display: flex;
+            color: #000;
+        }
+
+        .popup-image {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .popup-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .popup-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .popup-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .popup-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1010;
+        }
+
+        .popup-nav-button.prev {
+            left: -40px;
+        }
+
+        .popup-nav-button.next {
+            right: -40px;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                max-width: 100%;
+            }
+            .popup-body {
+                flex-direction: column;
+            }
+
+            .popup-image, .popup-text {
+                flex: none;
+                width: 100%;
+            }
+
+            .popup-nav-button.prev {
+                left: 10px;
+            }
+
+            .popup-nav-button.next {
+                right: 10px;
+            }
+
+            .popup-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo glitch" data-text="Varun Sendilraj"><a href="index.html" style="color: inherit; text-decoration: none;">Varun Sendilraj</a></div>
+            <nav>
+                <ul>
+                    <li><a href="about.html" class="glitch" data-text="ABOUT">ABOUT</a></li>
+                    <li><a href="#projects" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
+                    <li><a href="#essays" class="glitch" data-text="ESSAYS">ESSAYS</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="projects-grid">
+            <div class="project-card" data-project="CFUCare">
+                <img class="card-frame" src="card.svg" alt="Card Frame">
+                <img class="ufo-icon" src="ufo.svg" alt="UFO Icon">
+                <div class="card-content">
+                    <img src="/dfucare.png" alt="Project Image" >
+                    <p>CFUCare</p>
+                </div>
+            </div>
+            <div class="project-card" data-project="CFUCare">
+                <img class="card-frame" src="card.svg" alt="Card Frame">
+                <img class="ufo-icon" src="ufo.svg" alt="UFO Icon">
+                <div class="card-content">
+                    <img src="/placeholder.svg?height=150&width=200" alt="Project Image">
+                    <p>CFUCare</p>
+                </div>
+            </div>
+            <div class="project-card" data-project="CFUCare">
+                <img class="card-frame" src="card.svg" alt="Card Frame">
+                <img class="ufo-icon" src="ufo.svg" alt="UFO Icon">
+                <div class="card-content">
+                    <img src="/placeholder.svg?height=150&width=200" alt="Project Image">
+                    <p>CFUCare</p>
+                </div>
+            </div>
+            <div class="project-card" data-project="CFUCare">
+                <img class="card-frame" src="card.svg" alt="Card Frame">
+                <img class="ufo-icon" src="ufo.svg" alt="UFO Icon">
+                <div class="card-content">
+                    <img src="/placeholder.svg?height=150&width=200" alt="Project Image">
+                    <p>CFUCare</p>
+                </div>
+            </div>
+            <!-- Add more project cards as needed -->
+        </main>
+    </div>
+
+    <div class="popup-overlay">
+        <div class="popup-container">
+            <button class="popup-nav-button prev" id="prevProject">&#9664;</button>
+            <div class="popup-content">
+                <img src="popupCard.svg" alt="Popup Card Frame" class="popup-card-frame">
+                <div class="popup-inner-content">
+                    <div class="popup-header">
+                        <h2 class="popup-title">Project Title</h2>
+                    </div>
+                    <div class="popup-body">
+                        <div class="popup-image">
+                            <img src="dfucare.png" alt="Project Image">
+                        </div>
+                        <div class="popup-text">
+                            <p>Project description goes here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="popup-nav-button next" id="nextProject">&#9654;</button>
+            <button class="popup-close">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                title: "CFUCare",
+                image: "dfucare.png",
+                description: "Simple photo - blogging app where the user can read the micro - blogs and enjoy the pictures. Made using Flutter, Node.js, MongoDB, Firebase."
+            },
+            // Add more projects here
+        ];
+
+        let currentProjectIndex = 0;
+
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.addEventListener('click', () => {
+                currentProjectIndex = index;
+                showPopup(projects[currentProjectIndex]);
+            });
+        });
+
+        document.querySelector('.popup-close').addEventListener('click', hidePopup);
+
+        document.getElementById('prevProject').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+            showPopup(projects[currentProjectIndex]);
+        });
+
+        document.getElementById('nextProject').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+            showPopup(projects[currentProjectIndex]);
+        });
+
+        function showPopup(project) {
+            document.querySelector('.popup-title').textContent = project.title;
+            document.querySelector('.popup-image img').src = project.image;
+            document.querySelector('.popup-text p').textContent = project.description;
+            document.querySelector('.popup-overlay').style.display = 'flex';
+        }
+
+        function hidePopup() {
+            document.querySelector('.popup-overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
