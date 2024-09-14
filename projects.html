@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varun Sendilraj - Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body,html {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #191919;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .frame {
+            width: 360px;
+            height: 270px;
+            position: relative;
+            background-color: #8b8b8b;
+            margin-right: 40px;
+            box-shadow:
+                4px 0 0 0 #5a5a5a,
+                8px 0 0 0 #3c3c3c,
+                0 4px 0 0 #5a5a5a,
+                0 8px 0 0 #3c3c3c,
+                -4px 0 0 0 #5a5a5a,
+                -8px 0 0 0 #3c3c3c,
+                0 -4px 0 0 #5a5a5a,
+                0 -8px 0 0 #3c3c3c,
+                4px 4px 0 0 #3c3c3c,
+                -4px -4px 0 0 #3c3c3c,
+                4px -4px 0 0 #3c3c3c,
+                -4px 4px 0 0 #3c3c3c;
+            overflow: hidden;
+        }
+        .inline-image {
+        height: 1.5em;
+        width: auto;
+        margin-left: 10px;
+        padding-bottom: 20px;
+        vertical-align: middle;
+        image-rendering: pixelated;
+    }
+
+        .frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(100%);
+            opacity: 0;
+            z-index: 3;
+            animation: frameGlitch 10s infinite;
+        }
+
+        
+
+        .frame::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            background-color: #2c2c2c;
+            z-index: 1;
+        }
+
+        .frame img {
+            position: relative;
+            z-index: 2;
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+            margin: 16px;
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #808080;
+        }
+        .project {
+            display: flex;
+            margin-bottom: 80px;
+            align-items: flex-start;
+        }
+        .project-info {
+            flex: 1;
+        }
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .project-description {
+            font-size: 12px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 10px;
+        }
+        .social-icons {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+        }
+        .icon-img {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        .pixel-icon {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .pixel-icon:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Add this if you want to keep the glitch effect */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #3b3b3b;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 1s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #737373, 2px 2px #3e3d3e;
+            animation: glitch-anim2 0.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(10px, 9999px, 31px, 0);
+                transform: skew(0.55deg);
+            }
+            20% {
+                clip: rect(70px, 9999px, 71px, 0);
+                transform: skew(0.11deg);
+            }
+            40% {
+                clip: rect(29px, 9999px, 40px, 0);
+                transform: skew(0.42deg);
+            }
+            60% {
+                clip: rect(48px, 9999px, 15px, 0);
+                transform: skew(0.37deg);
+            }
+            80% {
+                clip: rect(82px, 9999px, 31px, 0);
+                transform: skew(0.16deg);
+            }
+            100% {
+                clip: rect(67px, 9999px, 4px, 0);
+                transform: skew(0.28deg);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(65px, 9999px, 32px, 0);
+                transform: skew(0.03deg);
+            }
+            20% {
+                clip: rect(7px, 9999px, 75px, 0);
+                transform: skew(0.14deg);
+            }
+            40% {
+                clip: rect(42px, 9999px, 11px, 0);
+                transform: skew(0.35deg);
+            }
+            60% {
+                clip: rect(28px, 9999px, 56px, 0);
+                transform: skew(0.54deg);
+            }
+            80% {
+                clip: rect(61px, 9999px, 23px, 0);
+                transform: skew(0.66deg);
+            }
+            100% {
+                clip: rect(20px, 9999px, 59px, 0);
+                transform: skew(0.89deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .frame {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4 / 3;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo" data-text="Varun Sendilraj" onclick="window.location.href='index.html'">Varun Sendilraj</div>
+            <nav>
+                <ul>
+                    <li><a href="about.html" data-text="ABOUT">ABOUT</a></li>
+                    <li><a href="projects.html" data-text="PROJECTS">PROJECTS</a></li>
+                    <li><a href="https://varunsendilraj.substack.com/" data-text="ESSAYS">ESSAYS</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1></h1>
+        <h1>SCIENTIFIC RESEARCH<img src="Pixelated Flask.png" alt="Varun Sendilraj" class="inline-image"></h1>
+
+        <div class="project">
+            <div class="frame">
+                <img src="dfucare-1.png" alt="Retro framed image">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="DFUCARE">DFUCARE</h2>
+                <p class="project-description">
+                    USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESSMENTS
+                </p>
+                <a href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2024.1386613/abstract" class="button " data-text="PUBLICATION">PUBLICATION</a>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="frame">
+                <img src="plate-q.png" alt="Retro framed image of PLATE-Q project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="PLATE-Q">PLATE-Q</h2>
+                <p class="project-description">
+                    A FRUGAL MICROPLATE READER AT LESS THAN 1% OF THE COMMERCIAL COST ($100 vs $20K) AND COMPARABLE ACCURACY INCREASING DEVICE ACCESSIBILITY.
+                </p>
+                <a href="https://www.biorxiv.org/content/10.1101/2022.06.11.495768v1.full" class="button" data-text="PUBLICATION">PUBLICATION</a>
+                <a href="https://github.com/igemsoftware2021/Lambert_GA" class="button glitch" data-text="GITHUB LINK">GITHUB LINK</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="frame">
+                <img src="Open-MSI.png" alt="Retro framed image of Open-MSI project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="Open-MSI">Open-MSI</h2>
+                <p class="project-description">
+                    AN OPEN-SOURCE GUI APPLICATION THAT CONVERTS TIME OF FLIGHT MASS SPECTROMETRY (TOF-MS) DATA INTO IMAGE DATA FOR DOWNSTREAM ANALYSIS.
+                </p>
+                <a href="#" class="button glitch" data-text="PUBLICATION">PUBLICATION</a>
+                <a href="https://github.com/VarunSendilraj/Open-MSI" class="button" data-text="GITHUB LINK">GITHUB LINK</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="frame">
+                <img src="physionet.png" alt="Retro framed image of ParpusECG project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="ParpusECG">ParpusECG</h2>
+                <p class="project-description">
+                    Utilized a Fusion of Deep Learning and Rule Based Techniques for Enhanced Paper-Based ECG Digitization with -5.192 SNR.
+                </p>
+                <a href="https://cinc.org/2024/Program/accepted/495_Preprint.pdf" class="button glitch" data-text="PUBLICATION">PUBLICATION</a>
+                <a href="https://moody-challenge.physionet.org/2024/leaderboard/" class="button" data-text="CHALLENGE RANKING">CHALLENGE RANKING</a>
+            </div>
+        </div>
+        <h1>Consumer Apps<img src="Pixelated User.png" alt="Varun Sendilraj" class="inline-image"></h1>
+    
+        <div class="project">
+            <div class="frame">
+                <img src="immersed.png" alt="Retro framed image of Immersed project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="Immersed">Immersed</h2>
+                <p class="project-description">
+                    REVOLUTIONIZING STORYTELLING THROUGH FINETUNED LLM's AND AI-ENHANCED INTERACTIVE MEDIA ALLOWING YOU TO DIVE INTO ALTERNATE UNIVERSES OF YOUR FAVORITE STORES.
+                </p>
+                <a href="https://www.loom.com/share/2254a96e562e42809b42bfb2441f8c44" class="button " data-text="Launch Demo">Launch Demo</a>
+                <a href="https://devpost.com/software/immerse-5hp34r#updates" class="button glitch" data-text="Award Certificate">Award Certificate</a>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="frame">
+                <img src="theOrigin.png" alt="Retro framed image of The Origin project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="The Origin">The Origin</h2>
+                <p class="project-description">
+                    THE FIRST AI POWERD EMAIL NEWSLETTER THAT ADAPTS TO YOUR INTERESTS. THE ORIGIN CURATES CONTENT UNIQUE TO YOU BY GOING THROUGH RESEARCH, NEWS, AND SOCIAL MEDIA.
+                </p>
+                <a href="https://www.linkedin.com/posts/arnavpatidar_you-may-be-subscribed-to-newsletters-like-activity-7151699513794035713-p6UD?utm_source=share&utm_medium=member_desktop" class="button glitch" data-text="LAUNCH DEMO">LAUNCH DEMO</a>
+                <a href="https://theoriginai.vercel.app/" class="button " data-text="WEBSITE">WEBSITE</a>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="frame">
+                <img src="textMyJournal.png" alt="Retro framed image of TxtMyJournal project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="TxtMyJournal">TxtMyJournal</h2>
+                <p class="project-description">
+                    AN AI-POWERED IMESSAGE CHATBOT DESIGNED TO CAPTURE AND REFLECT ON YOUR INTROSPECTIVE THOUGHTS AND JOURNAL ENTRIES THROUGH IMAGES, VOICE, AND TEXT.
+                </p>
+                <a href="https://x.com/vsendilraj_/status/1810358545982034152" class="button glitch" data-text="LAUNCH DEMO">LAUNCH DEMO</a>
+                <a href="https://github.com/vkodithala/tmj-api" class="button " data-text="GITHUB">GITHUB</a>
+            </div>
+        </div>
+
+        <h1>Other Work<img src="Pixelated emoji sunglasses.png" alt="Varun Sendilraj" class="inline-image"></h1>
+        <div class="project">
+            <div class="frame">
+                <img src="cdm.png" alt="Retro framed image of Agentic-CDM project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="Agentic-CDM">Agentic-CDM</h2>
+                <p class="project-description">
+                    AN AGENTIC LLM AND NLP WORKFLOW DESIGNED TO AUTOMATE CLINICAL DATA MANAGEMENT THROUGHOUT THE CLINICAL TRIALS PROCESS, WITH THE ABILITY SAVE UP TO 5 WEEKS PER STUDY.
+                </p>
+                <a href="https://www.edwards.com/" class="button" data-text="Proprietary - EDWARDS LIFE SCIENCES">Proprietary - EDWARDS LIFE SCIENCES</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="frame">
+                <img src="PitchRx Finals 0007.jpg" alt="Retro framed image of PitchRX project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="PitchRX">PitchRX</h2>
+                <p class="project-description">
+                    FOUNDED THE SOUTHEASTS LARGEST HEALTHCARE & BIOTECH PITCH COMPETITION SPONSORED BY MAYO CLINIC, CONTRARY CAPITAL, TEMPUS AI, DRIVE CAPITAL, AND OTHER TOP FIRMS.
+                </p>
+                <a href="#" class="button glitch" data-text="Compeition Website">Compeition Website</a>
+                <a href="https://mssvideoupload.mayo.edu/media/PitchRx+Competition/1_rnvtbf14" class="button " data-text="Finals Recording">Finals Recording</a>
+            </div>
+        </div>
+
+            </div>
+    
+    <div class="social-icons">
+        <a href="https://x.com/vsendilraj_" id="twitter" class="glitch pixel-icon">
+            <img src="Twitter icon.png" alt="Twitter" class="icon-img">
+        </a>
+        <a href="https://www.linkedin.com/in/varun-sendilraj/" id="linkedin" class="glitch pixel-icon">
+            <img src="Linkedin icon.png" alt="LinkedIn" class="icon-img">
+        </a>
+        <a href="https://github.com/VarunSendilraj" id="github" class="glitch pixel-icon">
+            <img src="Github icon.png" alt="GitHub" class="icon-img">
+        </a>
+    </div>
+
+
+</body>
+</html>

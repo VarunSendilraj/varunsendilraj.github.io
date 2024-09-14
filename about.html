@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varun Sendilraj - Scientific Research</title>
+    <title>Varun Sendilraj - About</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body {
+        body, html {
             font-family: 'Press Start 2P', cursive;
-            background-color: #1a1a1a;
+            background-color: #191919;
             color: #ffffff;
             margin: 0;
             padding: 0;
@@ -19,27 +19,41 @@
             margin: 0 auto;
             padding: 40px 20px;
         }
+            .intro-container h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #808080;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inline-image {
+        height: 1.5em;
+        width: auto;
+        margin-left: 10px;
+        vertical-align: middle;
+        image-rendering: pixelated;
+    }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 60px;
         }
-
         .logo {
             font-size: 20px;
+            cursor: pointer;
         }
-
         nav ul {
             list-style-type: none;
             display: flex;
             padding: 0;
         }
-
         nav ul li {
             margin-left: 30px;
         }
-
         nav ul li a {
             color: #fff;
             text-decoration: none;
@@ -48,183 +62,157 @@
         h1 {
             font-size: 36px;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             color: #808080;
         }
-        .project {
-            display: flex;
-            margin-bottom: 80px;
+        .frame {
+            width: 560px;
+            height:370px;
+            position: relative;
+            background-color: #8b8b8b;
+            margin: 0 auto 40px;
+            box-shadow:
+                4px 0 0 0 #5a5a5a,
+                8px 0 0 0 #3c3c3c,
+                0 4px 0 0 #5a5a5a,
+                0 8px 0 0 #3c3c3c,
+                -4px 0 0 0 #5a5a5a,
+                -8px 0 0 0 #3c3c3c,
+                0 -4px 0 0 #5a5a5a,
+                0 -8px 0 0 #3c3c3c,
+                4px 4px 0 0 #3c3c3c,
+                -4px -4px 0 0 #3c3c3c,
+                4px -4px 0 0 #3c3c3c,
+                -4px 4px 0 0 #3c3c3c;
+            overflow: hidden;
         }
-        .project-image {
-            width: 300px;
-            height: 200px;
-            background-color: #ffffff;
-            margin-right: 40px;
+        .frame::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            background-color: #2c2c2c;
+            z-index: 1;
         }
-        .project-info {
-            flex: 1;
+        .frame img {
+            position: relative;
+            z-index: 2;
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+            margin: 16px;
+            object-fit: cover;
+            image-rendering: pixelated;
         }
-        .project-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .project-description {
-            font-size: 12px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #ffffff;
-            color: #1a1a1a;
-            text-decoration: none;
-            margin-right: 20px;
-            font-size: 10px;
+        .about-text {
+            font-size: 14px;
+            text-align: justify;
+            margin-bottom: 40px;
         }
         .social-icons {
             position: fixed;
             right: 30px;
             bottom: 30px;
         }
-        .social-icons img {
+        .icon-img {
             width: 24px;
             height: 24px;
-            margin-top: 15px;
-            cursor: pointer;
+            display: block;
+        }
+        .pixel-icon {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .pixel-icon:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .about-list {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .about-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .about-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #808080;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo glitch" data-text="Varun Sendilraj">Varun Sendilraj</div>
+            <div class="logo" onclick="window.location.href='index.html'">Varun Sendilraj</div>
             <nav>
                 <ul>
-                    <li><a href="about.html" class="glitch" data-text="ABOUT">ABOUT</a></li>
-                    <li><a href="#projects" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
-                    <li><a href="#essays" class="glitch" data-text="ESSAYS">ESSAYS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="projects.html">PROJECTS</a></li>
+                    <li><a href="https://varunsendilraj.substack.com/">ESSAYS</a></li>
                 </ul>
             </nav>
         </header>
 
-        <h1>SCIENTIFIC RESEARCH</h1>
-
-        <div class="project">
-            <div class="project-image"></div>
-            <div class="project-info">
-                <h2 class="project-title">DFUCARE</h2>
-                <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                <a href="#" class="button">PUBLICATION</a>
-            </div>
+        <div class="intro-container">
+            <h1>Hey, I'm Varun...<img src="Pixelated emoji amazed.png" alt="Varun Sendilraj" class="inline-image"></h1>
         </div>
 
-        <div class="project">
-            <div class="project-image"></div>
-            <div class="project-info">
-                <h2 class="project-title">PLATE-Q</h2>
-                <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                <a href="#" class="button">PUBLICATION</a>
-                <a href="#" class="button">GITHUB LINK</a>
+        <div class="frame">
+            <img src="me.jpg" alt="Varun Sendilraj">
+        </div>
+
+        <div class="text-container">
+            <p class="about-text">
+                i got into coding at 16 cuz I was obsessed with video games. with aspirations to be the next notch, for my first project, i made a game in unity for high school coding class. watched way too many youtube and hours staring at colored text, i felt like i was dying (jk...kinda). somehow it got picked as a finalist for games for change. looking back, it was was not to great (lol) but hey, i made something people could actually use. and i got hooked to building stuff.
+            </p>
+
+            <p class="about-text">
+                sophomore year, covid hit. developing a few websites before I  landed a gig building a site to help get ppe to hospitals in the southeast (formerly knows as ppedropoff.com). sewa international (a nonprofit) picked it up, and 200+ people ended up using it. lowky my mind was blown. it hit me then that i could actually make a difference in peoples lives (and somewhat live up to my parents dreams by being a fake doctor) in the intersection of healthcare and software.
+            </p>
+
+            <p class="about-text">
+                that realization pushed me into healthcare/biotech. did some cool stuff since then:
+
+            </p>
+
+            <ul class="about-list">
+                <li>built a frugal microplate reader for underfunded labs (like my high school lab). got top 3 in measurement devices & was a grand prize finalists in the worldwide igem startup biohackathon.</li>
+                <li>helped design nutrient and pathogen biosensors to boost crop yields for small hydroponic farms. Our team made it to the Top 10 in the International iGEM competition.</li>
+                <li>(This one's a bit different), I co-founded Agro-Q, an IoT system for automating hydroponics. we sold the tech to a local hydroponics company for a few thousand dollars</li>
+                <li>realizing how hard it is for students to break into healthcare/biotech euntrepreurship, I founded pitchrx, became the biggest healthcare/biotech pitch competition in the southeast. we've helped 260+ student founders while being backed by mayo clinic, portal innovations, contrary capital, and more.</li>
+                <li>recently, I helped develop deep learning and computer vision models to enhance the ditization of ECG images, which got chosen as the best paper submisson at the 2024 International Computing in Cardiology Conference and was a wild card entry for the 2024 physioNet challenge.</li>
+            </ul>
+
+
+            <p class="about-text">
+                now, I'm a third-year at Georgia Tech, diving deep into AI-powered protein design and drug discovery. I really believe the future is heading toward creating drugs faster and more efficiently—and I want to be part of making that happen.
+            </p>
+
+            <div class="contact-section">
+                <h2 class="contact-header">Want to connect?</h2>
+                <p class="contact-text">Email me at: <a href="mailto:vsendilraj3@gatech.edu" class="email-link">vsendilraj3@gatech.edu</a></p>
             </div>
         </div>
-        <div class="project">
-            <div class="project-image"></div>
-            <div class="project-info">
-                <h2 class="project-title">Open-MSI</h2>
-                <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                <a href="#" class="button">PUBLICATION</a>
-                <a href="#" class="button">GITHUB LINK</a>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-image"></div>
-            <div class="project-info">
-                <h2 class="project-title">ParpusECG</h2>
-                <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                <a href="#" class="button">PUBLICATION</a>
-                <a href="#" class="button">CHALLENGE RANKING</a>
-            </div>
-        </div>
-        <h1>Consumer Apps</h1>
-    
-        <div class="project">
-                    <div class="project-image"></div>
-                    <div class="project-info">
-                        <h2 class="project-title">Immersed</h2>
-                        <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                        <a href="#" class="button">Launch Demo</a>
-                        <a href="#" class="button">Award Certificate</a>
-                    </div>
-                </div>
-
-        <div class="project">
-                    <div class="project-image"></div>
-                    <div class="project-info">
-                        <h2 class="project-title">The Origin</h2>
-                        <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                        <a href="#" class="button">LAUNCH DEMO</a>
-                        <a href="#" class="button">WEBSITE</a>
-                    </div>
-                </div>
-
-        <div class="project">
-                    <div class="project-image"></div>
-                    <div class="project-info">
-                        <h2 class="project-title">TxtMyJournal</h2>
-                        <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                        <a href="#" class="button">LAUNCH DEMO</a>
-                        <a href="#" class="button">GITHUB</a>
-                    </div>
-                </div>
-
-        <h1>Other Work</h1>
-        <div class="project">
-                    <div class="project-image"></div>
-                    <div class="project-info">
-                        <h2 class="project-title">Agentic-CDM</h2>
-                        <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                        <a href="#" class="button">Proprietary - EDWARDS LIFE SCIENCES</a>
-                    </div>
-                </div>
-        <div class="project">
-                    <div class="project-image"></div>
-                    <div class="project-info">
-                        <h2 class="project-title">PitchRX</h2>
-                        <p class="project-description">USED DEEP LEARNING AND COMPUTER VISION ALGORITHMS TO DEVELOP THE FIRST END TO END PLATFORM FOR COMPREHENSIVE DIABETIC FOOT ULCER ASSESMENTS</p>
-                        <a href="#" class="button">Compeition Website</a>
-                    </div>
-                </div>
-
-            </div>
-        
-
-
-        
-        
-        
-        
-            
-        
-        
-
-
-
-    <div class="social-icons">
-        <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Social Icon 1">
-        <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Social Icon 2">
-        <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Social Icon 3">
     </div>
 
-    <script>
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <div class="social-icons">
+        <a href="https://x.com/vsendilraj_" id="twitter" class="glitch pixel-icon">
+            <img src="Twitter icon.png" alt="Twitter" class="icon-img">
+        </a>
+        <a href="https://www.linkedin.com/in/varun-sendilraj/" id="linkedin" class="glitch pixel-icon">
+            <img src="Linkedin icon.png" alt="LinkedIn" class="icon-img">
+        </a>
+        <a href="https://github.com/VarunSendilraj" id="github" class="glitch pixel-icon">
+            <img src="Github icon.png" alt="GitHub" class="icon-img">
+        </a>
+    </div>
 </body>
 </html>

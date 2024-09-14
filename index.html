@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Press Start 2P', cursive;
-            background-color: #1a1a1a;
+            background-color: #191919 !important;
             color: #fff;
             height: 100%;
             overflow: hidden;
@@ -180,14 +180,14 @@
 
         .glitch::before {
             left: 2px;
-            text-shadow: -2px 0 #888;
+            text-shadow: -2px 0 #373737;
             clip: rect(44px, 450px, 56px, 0);
             animation: glitch-anim 2s infinite linear alternate-reverse;
         }
 
         .glitch::after {
             left: -2px;
-            text-shadow: -2px 0 #ccc, 2px 2px #888;
+            text-shadow: -2px 0 #4d4d4d, 2px 2px #676767;
             animation: glitch-anim2 2s infinite linear alternate-reverse;
         }
 
@@ -263,7 +263,7 @@
             }
         }
 
-        /* Scanline effect */
+        /* Scanline effect 
         .scanline {
             position: fixed;
             top: 0;
@@ -282,8 +282,9 @@
             opacity: 0.1;
             pointer-events: none;
         }
+             */
 
-        /* Background glitch effect */
+        /* Background glitch effect
         .background-glitch {
             position: fixed;
             top: 0;
@@ -294,6 +295,7 @@
             z-index: 0;
             overflow: hidden;
         }
+             */
 
         .background-glitch::before {
             content: "";
@@ -413,6 +415,22 @@
             transform: scale(1.1);
             transition: transform 0.2s ease-in-out;
         }
+
+        .icon-img {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        .pixel-icon {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .pixel-icon:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -424,18 +442,17 @@
             <nav>
                 <ul>
                     <li><a href="about.html" class="glitch" data-text="ABOUT">ABOUT</a></li>
-                    <li><a href="#projects" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
-                    <li><a href="#essays" class="glitch" data-text="ESSAYS">ESSAYS</a></li>
+                    <li><a href="projects.html" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
+                    <li><a href="https://varunsendilraj.substack.com/" class="glitch" data-text="ESSAYS">ESSAYS</a></li>
                 </ul>
             </nav>
         </header>
         <main>
             <div class="content">
-                <h1 class="glitch" data-text="HI I'M VARUN...">HI I'M VARUN...</h1>
-                <p class="glitch" data-text="I'M A 20 YEAR OLD AI TINKERER BASED IN ATL,">I'M A 20 YEAR OLD AI TINKERER BASED IN ATL,</p>
-                <p class="glitch" data-text="CURRENTLY STUDYING BME + CS AT GATECH">CURRENTLY STUDYING BME + CS AT GATECH</p>
-                <p class="glitch" data-text="<PURPOSE>">&lt;PURPOSE&gt;</p>
-                <p class="glitch" data-text="CURRENTLY:">CURRENTLY:</p>
+                <h1 class="glitch" data-text="HI I'M VARUN..."><u>HI I'M VARUN...</u></h1>
+                <p class="glitch" data-text="I'M A 20 YEAR OLD AI TINKERER BASED IN ATL,">- I'M A 20 YEAR OLD AI DEVELOPER BASED IN ATL</p>
+                <p class="glitch" data-text="STUDYING BME + CS AT GATECH">- STUDYING BME + CS AT GATECH</p>
+                <p class="glitch" data-text="CURRENTLY:">- CURRENTLY EXPLORING THE INTERSECTION OF AI AND MEDICINE</p>
             </div>
             <div class="image-container">
                 <div class="image-glitch">
@@ -446,9 +463,15 @@
             </div>
         </main>
         <div class="social-icons">
-            <a href="#" id="twitter" class="glitch pixel-icon" data-text="󰕄">󰕄</a>
-            <a href="#" id="linkedin" class="glitch pixel-icon" data-text="󰌻">󰌻</a>
-            <a href="#" id="github" class="glitch pixel-icon" data-text="󰊤">󰊤</a>
+            <a href="https://x.com/vsendilraj_" id="twitter" class="glitch pixel-icon">
+                <img src="Twitter icon.png" alt="Twitter" class="icon-img">
+            </a>
+            <a href="https://www.linkedin.com/in/varun-sendilraj/" id="linkedin" class="glitch pixel-icon">
+                <img src="Linkedin icon.png" alt="LinkedIn" class="icon-img">
+            </a>
+            <a href="https://github.com/VarunSendilraj" id="github" class="glitch pixel-icon">
+                <img src="Github icon.png" alt="GitHub" class="icon-img">
+            </a>
         </div>
     </div>
     <script>
