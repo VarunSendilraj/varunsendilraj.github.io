@@ -17,7 +17,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 40px;
         }
         header {
             display: flex;
@@ -30,7 +30,7 @@
             height: 270px;
             position: relative;
             background-color: #8b8b8b;
-            margin-right: 40px;
+            margin-right: 60px;
             box-shadow:
                 4px 0 0 0 #5a5a5a,
                 8px 0 0 0 #3c3c3c,
@@ -45,6 +45,10 @@
                 4px -4px 0 0 #3c3c3c,
                 -4px 4px 0 0 #3c3c3c;
             overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .frame:hover {
+            transform: scale(1.02);
         }
         .inline-image {
         height: 1.5em;
@@ -113,14 +117,24 @@
         }
         h1 {
             font-size: 36px;
-            text-align: center;
-            margin-bottom: 60px;
+            text-align: left;
+            margin: 80px 0 40px;
             color: #808080;
+            padding-left: 30px;
+            border-left: 4px solid #e0e0e0;
         }
         .project {
             display: flex;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
             align-items: flex-start;
+            padding: 30px;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.03);
         }
         .project-info {
             flex: 1;
@@ -128,20 +142,28 @@
         .project-title {
             font-size: 24px;
             margin-bottom: 20px;
+            color: #e0e0e0;
         }
         .project-description {
             font-size: 12px;
             margin-bottom: 30px;
             line-height: 1.8;
+            color: #b3b3b3;
         }
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #ffffff;
-            color: #1a1a1a;
+            padding: 12px 24px;
+            background-color: transparent;
+            color: #ffffff;
             text-decoration: none;
             margin-right: 20px;
             font-size: 10px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #e0e0e0;
+            color: #191919;
         }
         .social-icons {
             position: fixed;
@@ -255,9 +277,93 @@
                 margin-bottom: 20px;
             }
         }
+
+        /* Add these background glitch styles */
+        .background-glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000;
+            display: grid;
+            grid-template-columns: repeat(30, 1fr);
+            grid-template-rows: repeat(30, 1fr);
+        }
+
+        .pixel {
+            background: #111;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .pixel.active {
+            opacity: 1;
+        }
+
+        .pixel:nth-child(3n) {
+            background: #222;
+        }
+
+        .pixel:nth-child(7n) {
+            background: #333;
+        }
+
+        /* Update body background to be transparent */
+        body, html {
+            background-color: transparent;
+        }
+
+        /* Update container background */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Custom cursor styles */
+        body {
+            cursor: none; /* Hide the default cursor */
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+
+        .custom-cursor.hover {
+            transform: scale(1.5);
+        }
+
+        /* Make sure all clickable elements show the right cursor behavior */
+        a, button, .pixel-icon, .image-glitch, .frame {
+            cursor: none;
+        }
+
+        /* Add these styles in the <style> section, after your existing styles */
+        ::selection {
+            background-color: #00ff00; /* Retro terminal green */
+            color: #000000;
+        }
+
+        ::-moz-selection {
+            background-color: #00ff00; /* For Firefox */
+            color: #000000;
+        }
+
+        .category-section {
+            margin-bottom: 100px;
+        }
     </style>
 </head>
 <body>
+    <div class="background-glitch"></div>
     <div class="container">
         <header>
             <div class="logo" data-text="Varun Sendilraj" onclick="window.location.href='index.html'">Varun Sendilraj</div>
@@ -265,7 +371,7 @@
                 <ul>
                     <li><a href="about.html" data-text="ABOUT">ABOUT</a></li>
                     <li><a href="projects.html" data-text="PROJECTS">PROJECTS</a></li>
-                    <li><a href="https://drive.google.com/file/d/1uFE8AM10cOrvNAJH99VFjDRPamzpmWKZ/view" data-text="ESSAYS">RESUME</a></li>
+                    <li><a href="https://drive.google.com/file/d/1bLL7bD3M1RsunmkkcpPzCjG_r4WYi86v/view?usp=sharing" data-text="ESSAYS">RESUME</a></li>
                 </ul>
             </nav>
         </header>
@@ -308,7 +414,7 @@
                 <p class="project-description">
                     AN OPEN-SOURCE GUI APPLICATION THAT CONVERTS TIME OF FLIGHT MASS SPECTROMETRY (TOF-MS) DATA INTO IMAGE DATA FOR DOWNSTREAM ANALYSIS.
                 </p>
-                <a href="#" class="button glitch" data-text="PUBLICATION">PUBLICATION</a>
+                <a href="https://www.mssj.jp/conf/72/program/1A-O1-1500.html" class="button glitch" data-text="PUBLICATION">PUBLICATION</a>
                 <a href="https://github.com/VarunSendilraj/Open-MSI" class="button" data-text="GITHUB LINK">GITHUB LINK</a>
             </div>
         </div>
@@ -391,8 +497,21 @@
                 <p class="project-description">
                     FOUNDED THE SOUTHEASTS LARGEST HEALTHCARE & BIOTECH PITCH COMPETITION SPONSORED BY MAYO CLINIC, CONTRARY CAPITAL, TEMPUS AI, DRIVE CAPITAL, AND OTHER TOP FIRMS.
                 </p>
-                <a href="#" class="button glitch" data-text="Compeition Website">Compeition Website</a>
+                <a href="https://pitchrx.io/" class="button glitch" data-text="Compeition Website">Compeition Website</a>
                 <a href="https://mssvideoupload.mayo.edu/media/PitchRx+Competition/1_rnvtbf14" class="button " data-text="Finals Recording">Finals Recording</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="frame">
+                <img src="Photo from Google Photos.jpg" alt="Retro framed image of Agro-Q project">
+            </div>
+            <div class="project-info">
+                <h2 class="project-title glitch" data-text="Agro-Q">Agro-Q</h2>
+                <p class="project-description">
+                    DEVELOPED AN AUTOMATED HYDROPONICS SYSTEM WITH IOT SENSORS AND A SWIFT MOBILE APP FOR REMOTE MONITORING AND CONTROL. SUCCESSFULLY SOLD THE TECHNOLOGY TO A LOCAL HYDROPONICS COMPANY.
+                </p>
+                <a href="https://photos.app.goo.gl/phq6qqPtVCHvJ2B68" class="button glitch" data-text="Demo Video">Images of System</a>
+                <a href="https://docs.google.com/presentation/d/1kR0uECmIAt6z6yUNshFTemkz6OXuUcpF/edit?usp=sharing&ouid=116109689168088453112&rtpof=true&sd=true" class="button" data-text="Pitch Deck">Pitch Deck</a>
             </div>
         </div>
 
@@ -410,6 +529,97 @@
         </a>
     </div>
 
+    <script>
+        function createPixelBackground() {
+            const background = document.querySelector('.background-glitch');
+            background.innerHTML = '';
+            
+            // Create 900 pixels (30x30 grid)
+            for (let i = 0; i < 900; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                background.appendChild(pixel);
+            }
+            
+            function animatePixels() {
+                const pixels = document.querySelectorAll('.pixel');
+                pixels.forEach(pixel => {
+                    if (Math.random() < 0.003) {
+                        pixel.classList.toggle('active');
+                        
+                        setTimeout(() => {
+                            pixel.classList.remove('active');
+                        }, Math.random() * 2000 + 500);
+                    }
+                });
+                
+                requestAnimationFrame(animatePixels);
+            }
+            
+            animatePixels();
+        }
 
+        // Initialize the background
+        createPixelBackground();
+
+        function initializeCustomCursor() {
+            // Create cursor element
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            document.body.appendChild(cursor);
+
+            // Update cursor position
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+
+            // Add hover effect for interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .pixel-icon, .image-glitch, .frame');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                });
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                });
+            });
+        }
+
+        // Initialize the custom cursor
+        initializeCustomCursor();
+
+        document.addEventListener('mouseup', () => {
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+            
+            if (selectedText.length > 0) {
+                const range = selection.getRangeAt(0);
+                const originalContent = range.cloneContents();
+                const span = document.createElement('span');
+                
+                // Only wrap if the text isn't already wrapped
+                if (!selectedText.startsWith('<') && !selectedText.endsWith('/>')) {
+                    span.textContent = `<${selectedText}/>`;
+                    
+                    // Preserve the selection
+                    range.deleteContents();
+                    range.insertNode(span);
+                    
+                    // Revert back to original content after a short delay
+                    setTimeout(() => {
+                        span.parentNode.replaceChild(originalContent, span);
+                        
+                        // Restore the selection
+                        const newRange = document.createRange();
+                        newRange.setStart(originalContent.firstChild, 0);
+                        newRange.setEnd(originalContent.firstChild, selectedText.length);
+                        selection.removeAllRanges();
+                        selection.addRange(newRange);
+                    }, 5000); // 5 second delay before reverting
+                }
+            }
+        });
+    </script>
 </body>
 </html>
