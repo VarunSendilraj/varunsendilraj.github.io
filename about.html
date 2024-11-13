@@ -354,6 +354,140 @@
         .email-link:hover {
             opacity: 0.8;
         }
+
+        .awards-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .awards-list li {
+            margin-bottom: 25px;
+            padding: 15px 20px;
+            background: rgba(215, 232, 252, 0.05);
+            border-left: 3px solid #d7e8fc;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .awards-list li:hover {
+            transform: translateX(10px);
+            background: rgba(215, 232, 252, 0.08);
+        }
+
+        .award-year {
+            display: inline-block;
+            font-size: 12px;
+            color: #00ff00;
+            margin-bottom: 5px;
+        }
+
+        .award-name {
+            display: block;
+            font-size: 16px;
+            color: #ffffff;
+            margin: 5px 0;
+        }
+
+        .award-detail {
+            display: block;
+            font-size: 12px;
+            color: #808080;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .award-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #00ff00;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .award-item:hover::before {
+            opacity: 1;
+        }
+
+        .award-icon {
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(215, 232, 252, 0.05);
+            border-radius: 4px;
+            filter: grayscale(1) brightness(1.5);
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .award-item:hover .award-icon {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        .award-content {
+            flex: 1;
+        }
+
+        .award-title {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 4px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .award-org {
+            font-size: 12px;
+            color: #808080;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Optional: Add a subtle scan line effect */
+        .award-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .award-item:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -381,30 +515,70 @@
         <div class="content-section">
             <div class="section-title">BACKGROUND</div>
             <p class="about-text">
-                i got into coding at 16 cuz I was obsessed with video games. with aspirations to be the next notch, for my first project, i made a game in unity for high school coding class. watched way too many youtube and hours staring at colored text, i felt like i was dying (jk...kinda). somehow it got picked as a finalist for games for change. looking back, it was was not to great (lol) but hey, i made something people could actually use. and i got hooked to building stuff.
+                Hi, I’m Varun—a student at GT with a passion for bridging Biomedical Engineering and Computer Science. My journey so far spans academia, industry, and entrepreneurship, each offering unique challenges and invaluable lessons.
             </p>
 
             <p class="about-text">
-                sophomore year, covid hit. developing a few websites before I landed a gig building a site to help get ppe to hospitals in the southeast (formerly knows as ppedropoff.com). sewa international (a nonprofit) picked it up, and 200+ people ended up using it. lowky my mind was blown. it hit me then that i could actually make a difference in peoples lives (and somewhat live up to my parents dreams by being a fake doctor) in the intersection of healthcare and software.
+                In academia, I’ve immersed myself in research, working in four labs (including internationally) and contributing to the field with four published papers in journals and conferences. Through this, I’ve learned that solving meaningful problems requires patience, a willingness to ask difficult questions, and the discipline to pursue answers no matter how elusive they may be.
             </p>
 
-            <div class="section-title">ACHIEVEMENTS</div>
             <p class="about-text">
-                that realization pushed me into healthcare/biotech. did some cool stuff since then:
+                In industry, I’ve worked with leading medical device companies, where I’ve seen firsthand how ideas evolve from concepts to impactful solutions in the real world. The key lesson? Execution is everything. Brilliant ideas fall flat without the systems, teams, and persistence to bring them to life.
             </p>
 
-            <ul class="about-list">
-                <li>built a frugal microplate reader for underfunded labs (like my high school lab). got top 3 in measurement devices & was a grand prize finalists in the worldwide igem startup biohackathon.</li>
-                <li>helped design nutrient and pathogen biosensors to boost crop yields for small hydroponic farms. Our team made it to the Top 10 in the International iGEM competition.</li>
-                <li>(This one's a bit different), I co-founded Agro-Q, an IoT system for automating hydroponics. we sold the tech to a local hydroponics company for a few thousand dollars</li>
-                <li>realizing how hard it is for students to break into healthcare/biotech euntrepreurship, I founded pitchrx, became the biggest healthcare/biotech pitch competition in the southeast. we've helped 260+ student founders while being backed by mayo clinic, portal innovations, contrary capital, and more.</li>
-                <li>recently, I helped develop deep learning and computer vision models to enhance the ditization of ECG images, which got chosen as the best paper submisson at the 2024 International Computing in Cardiology Conference and was a wild card entry for the 2024 physioNet challenge.</li>
-            </ul>
-
-            <div class="section-title">CURRENT FOCUS</div>
             <p class="about-text">
-                now, I'm a third-year at Georgia Tech, diving deep into AI-powered protein design and drug discovery. I really believe the future is heading toward creating drugs faster and more efficiently—and I want to be part of making that happen.
+                Entrepreneurship is where I first tested my ability to create something from scratch. In high school, my friends and I built an automated IoT hydroponics system, turning it into a profitable business that generated over $5,000 in revenue. That experience—and the ventures I pursued afterward—taught me the value of perseverance, adaptability, and building products with the end user in mind.
             </p>
+
+            <p class="about-text">
+                Today, I’m focused on solving technically challenging problems—like explainable AI for healthcare and AI-powered small molecule drug discovery—while also pursuing simpler, creative endeavors like building fun, beautiful consumer apps. Whether it’s tackling complexity or crafting simplicity, I’m driven by the same goal: to create things that make a real difference.
+            </p>
+
+            <div class="section-title">AWARDS & RECOGNITION</div>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-content">
+                        <div class="award-title">PhysioNet ML Challenges Best Paper '24</div>
+                        <div class="award-org">Top Submission & Wild Card Entry - ECG Digitization Research</div>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🚀</div>
+                    <div class="award-content">
+                        <div class="award-title">PitchRx Founder '24</div>
+                        <div class="award-org">SE Largest Healthcare Competition - Backed by Mayo Clinic</div>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🎓</div>
+                    <div class="award-content">
+                        <div class="award-title">Nakatani RIES Scholar '23</div>
+                        <div class="award-org">1 of 10 GT BME Students Selected for fully funded Japan Research</div>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🧬</div>
+                    <div class="award-content">
+                        <div class="award-title">iGEM Top 10 in the world '23</div>
+                        <div class="award-org">International Synthetic Biology Competition</div>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">💡</div>
+                    <div class="award-content">
+                        <div class="award-title">iGEM EPIC Grand Prize Finalist '22</div>
+                        <div class="award-org">International Startup Biohackathon</div>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🔬</div>
+                    <div class="award-content">
+                        <div class="award-title">ADA Scientific Sessions '22</div>
+                        <div class="award-org">Published in Diabetes® Journal & Presented at Large Diabetes Conference</div>
+                    </div>
+                </div>
+            </div>
 
             <div class="contact-section">
                 <h2 class="contact-header">Want to connect?<img src="Pixelated Chat (1).png" alt="Chat" class="inline-image"></h2>
