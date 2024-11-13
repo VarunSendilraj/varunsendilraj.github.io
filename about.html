@@ -488,6 +488,83 @@
         .award-item:hover::after {
             opacity: 1;
         }
+
+        p, li, .award-title, .award-org, .project-description {
+            transition: color 0.2s ease;
+        }
+
+        p:hover, li:hover, .award-title:hover, .award-org:hover, .project-description:hover {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin-left: 0;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+                padding: 8px 0;
+                display: block;
+            }
+
+            .frame {
+                width: 100%;
+                height: 300px;
+                margin: 20px 0;
+            }
+
+            .content-section {
+                padding: 10px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin: 30px 0 15px;
+            }
+
+            .about-text {
+                font-size: 12px;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 360px) {
+            nav ul li a {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -668,38 +745,6 @@
 
         // Initialize the custom cursor
         initializeCustomCursor();
-
-        document.addEventListener('mouseup', () => {
-            const selection = window.getSelection();
-            const selectedText = selection.toString().trim();
-            
-            if (selectedText.length > 0) {
-                const range = selection.getRangeAt(0);
-                const originalContent = range.cloneContents();
-                const span = document.createElement('span');
-                
-                // Only wrap if the text isn't already wrapped
-                if (!selectedText.startsWith('<') && !selectedText.endsWith('/>')) {
-                    span.textContent = `<${selectedText}/>`;
-                    
-                    // Preserve the selection
-                    range.deleteContents();
-                    range.insertNode(span);
-                    
-                    // Revert back to original content after a short delay
-                    setTimeout(() => {
-                        span.parentNode.replaceChild(originalContent, span);
-                        
-                        // Restore the selection
-                        const newRange = document.createRange();
-                        newRange.setStart(originalContent.firstChild, 0);
-                        newRange.setEnd(originalContent.firstChild, selectedText.length);
-                        selection.removeAllRanges();
-                        selection.addRange(newRange);
-                    }, 5000); // Changed from 1000 to 5000 (5 seconds)
-                }
-            }
-        });
     </script>
 </body>
 </html>

@@ -360,6 +360,122 @@
         .category-section {
             margin-bottom: 100px;
         }
+
+        /* Add these new styles */
+        p, .project-title, .project-description {
+            transition: color 0.2s ease;
+        }
+
+        p:hover, .project-title:hover, .project-description:hover {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .project {
+                flex-direction: column;
+                margin-bottom: 60px;
+            }
+
+            .frame {
+                width: 100%;
+                height: 300px; /* Increased height for mobile */
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .project-info {
+                width: 100%;
+            }
+
+            .project-title {
+                font-size: 20px;
+                margin-top: 20px;
+            }
+
+            .project-description {
+                font-size: 12px;
+                margin: 15px 0;
+            }
+
+            .button {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin: 40px 0 30px;
+                padding-left: 15px;
+            }
+
+            .inline-image {
+                height: 1.2em;
+                margin-left: 5px;
+            }
+        }
+
+        /* Add better image handling for mobile */
+        .frame img {
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+            margin: 16px;
+            object-fit: contain; /* Changed from cover to contain */
+            image-rendering: pixelated;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin-left: 0;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+                padding: 8px 0;
+                display: block;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+
+        /* Add a smaller breakpoint for very small devices */
+        @media (max-width: 360px) {
+            nav ul li a {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -588,38 +704,6 @@
 
         // Initialize the custom cursor
         initializeCustomCursor();
-
-        document.addEventListener('mouseup', () => {
-            const selection = window.getSelection();
-            const selectedText = selection.toString().trim();
-            
-            if (selectedText.length > 0) {
-                const range = selection.getRangeAt(0);
-                const originalContent = range.cloneContents();
-                const span = document.createElement('span');
-                
-                // Only wrap if the text isn't already wrapped
-                if (!selectedText.startsWith('<') && !selectedText.endsWith('/>')) {
-                    span.textContent = `<${selectedText}/>`;
-                    
-                    // Preserve the selection
-                    range.deleteContents();
-                    range.insertNode(span);
-                    
-                    // Revert back to original content after a short delay
-                    setTimeout(() => {
-                        span.parentNode.replaceChild(originalContent, span);
-                        
-                        // Restore the selection
-                        const newRange = document.createRange();
-                        newRange.setStart(originalContent.firstChild, 0);
-                        newRange.setEnd(originalContent.firstChild, selectedText.length);
-                        selection.removeAllRanges();
-                        selection.addRange(newRange);
-                    }, 5000); // 5 second delay before reverting
-                }
-            }
-        });
     </script>
 </body>
 </html>
