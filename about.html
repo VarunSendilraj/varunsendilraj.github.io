@@ -565,6 +565,100 @@
                 font-size: 10px;
             }
         }
+
+        .publications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .publication-card {
+            background: rgba(215, 232, 252, 0.05);
+            border: 2px solid #333;
+            padding: 20px;
+            cursor: none;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .publication-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .publication-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            background: rgba(215, 232, 252, 0.08);
+            border-color: #00ff00;
+        }
+
+        .publication-year {
+            font-size: 12px;
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .publication-title {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .publication-desc {
+            font-size: 12px;
+            color: #808080;
+            margin-bottom: 15px;
+        }
+
+        .publication-link {
+            font-size: 10px;
+            color: #00ff00;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .publication-card:hover .publication-link {
+            opacity: 1;
+        }
+
+        /* Add scanline effect for cards */
+        .publication-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.03),
+                rgba(0, 255, 0, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .publications-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -653,6 +747,54 @@
                     <div class="award-content">
                         <div class="award-title">ADA Scientific Sessions '22</div>
                         <div class="award-org">Published in Diabetes® Journal & Presented at Large Diabetes Conference</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">PUBLICATIONS<img src="Pixelated Flask.png" alt="Publications" class="inline-image"></div>
+            <div class="publications-container">
+                <div class="publication-card" onclick="window.open('https://cinc.org/2024/Program/accepted/495_Preprint.pdf', '_blank')">
+                    <div class="publication-year">2024</div>
+                    <div class="publication-content">
+                        <div class="publication-title">Computing in Cardiology</div>
+                        <div class="publication-desc">Paper ECG Digitization Using Deep Learning</div>
+                        <div class="publication-link">[ CLICK TO READ ]</div>
+                    </div>
+                </div>
+                
+                <div class="publication-card" onclick="window.open('https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2024.1386613/abstract', '_blank')">
+                    <div class="publication-year">2024</div>
+                    <div class="publication-content">
+                        <div class="publication-title">Frontiers in Endocrinology</div>
+                        <div class="publication-desc">DFUCare: AI-Powered Ulcer Assessment</div>
+                        <div class="publication-link">[ CLICK TO READ ]</div>
+                    </div>
+                </div>
+                
+                <div class="publication-card" onclick="window.open('https://www.mssj.jp/conf/72/program/1A-O1-1500.html', '_blank')">
+                    <div class="publication-year">2023</div>
+                    <div class="publication-content">
+                        <div class="publication-title">Mass Spectrometry Society of Japan</div>
+                        <div class="publication-desc">Open-MSI: GUI for TOF-MS Analysis</div>
+                        <div class="publication-link">[ CLICK TO READ ]</div>
+                    </div>
+                </div>
+                
+                <div class="publication-card" onclick="window.open('https://www.biorxiv.org/content/10.1101/2022.06.11.495768v1.full', '_blank')">
+                    <div class="publication-year">2022</div>
+                    <div class="publication-content">
+                        <div class="publication-title">BioRxiv</div>
+                        <div class="publication-desc">PLATE-Q: Frugal Microplate Reader</div>
+                        <div class="publication-link">[ CLICK TO READ ]</div>
+                    </div>
+                </div>
+
+                <div class="publication-card" onclick="window.open('https://diabetesjournals.org/diabetes/article/71/Supplement_1/485-P/146450/485-P-DFUCare-Deep-Learning-Based-Mobile-App-for', '_blank')">
+                    <div class="publication-year">2022</div>
+                    <div class="publication-content">
+                        <div class="publication-title">Diabetes®</div>
+                        <div class="publication-desc">DFUCare: Deep Learning Mobile App for Ulcer Monitoring</div>
+                        <div class="publication-link">[ CLICK TO READ ]</div>
                     </div>
                 </div>
             </div>
