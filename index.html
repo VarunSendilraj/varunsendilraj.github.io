@@ -447,6 +447,21 @@
             color: #00ff00;
             text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
         }
+
+        /* Add these styles in the <style> section */
+        .perspective-container {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+
+        .perspective-image {
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .image-container {
+            perspective: 1000px;
+        }
     </style>
 </head>
 <body>
@@ -467,15 +482,15 @@
         <main>
             <div class="content">
                 <h1 class="glitch" data-text="HI I'M VARUN..."><u>HI I'M VARUN...</u></h1>
-                <p class="glitch" data-text="I'M A 21 YEAR OLD AI TINKERER BASED IN ATL,">I'M A 20 YEAR OLD AI DEVELOPER BASED IN ATL</p>
+                <p class="glitch" data-text="I'M A 21 YEAR OLD AI TINKERER BASED IN ATL,">I'M A 21 YEAR OLD AI DEVELOPER BASED IN ATL</p>
                 <p class="glitch" data-text="STUDYING BME + CS AT GATECH">STUDYING BME + CS AT GATECH</p>
                 <p class="glitch" data-text="CURRENTLY:">CURRENTLY EXPLORING THE INTERSECTION OF AI AND MEDICINE</p>
             </div>
             <div class="image-container">
-                <div class="image-glitch">
-                    <img src="image 6.png" alt="Varun Sendilraj">
-                    <img src="image 5.png" alt="Varun Sendilraj">
-                    <img src="image 6.png" alt="Varun Sendilraj">
+                <div class="image-glitch perspective-container">
+                    <img src="image 6.png" alt="Varun Sendilraj" class="perspective-image">
+                    <img src="image 5.png" alt="Varun Sendilraj" class="perspective-image">
+                    <img src="image 6.png" alt="Varun Sendilraj" class="perspective-image">
                 </div>
             </div>
         </main>
@@ -663,6 +678,41 @@
 
         // Initialize the custom cursor
         initializeCustomCursor();
+
+        // Add this new function to your script section
+        function initializePerspectiveEffect() {
+            const container = document.querySelector('.perspective-container');
+            const bounds = container.getBoundingClientRect();
+            
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                
+                // Calculate the relative position of the mouse to the center of the container
+                const centerX = bounds.left + bounds.width / 2;
+                const centerY = bounds.top + bounds.height / 2;
+                
+                // Calculate the rotation angles (limited to ±15 degrees)
+                const rotateY = ((mouseX - centerX) / bounds.width) * 15;
+                const rotateX = -((mouseY - centerY) / bounds.height) * 15;
+                
+                // Apply the transformation
+                container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            // Reset transform when mouse leaves the window
+            document.addEventListener('mouseleave', () => {
+                container.style.transform = 'rotateX(0) rotateY(0)';
+            });
+            
+            // Update bounds on window resize
+            window.addEventListener('resize', () => {
+                bounds = container.getBoundingClientRect();
+            });
+        }
+
+        // Add this line after initializeCustomCursor();
+        initializePerspectiveEffect();
     </script>
 </body>
 </html>
