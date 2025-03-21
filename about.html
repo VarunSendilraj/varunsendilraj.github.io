@@ -659,6 +659,275 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .experience-timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50px;
+            width: 6px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                #333 0px,
+                #333 5px,
+                #555 5px,
+                #555 10px
+            );
+            top: 0;
+            z-index: 1;
+        }
+
+        .timeline-line::before, .timeline-line::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #00ff00;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .timeline-line::before {
+            top: -10px;
+        }
+
+        .timeline-line::after {
+            bottom: -10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Create staggered effect with alternating positions */
+        .timeline-item:nth-child(odd) {
+            padding-left: 100px;
+            transform: translateY(-5px);
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 130px;
+            transform: translateY(5px);
+        }
+
+        .timeline-item:nth-child(3n) {
+            padding-left: 150px;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-8px) translateX(5px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #d7e8fc;
+            border: 4px solid #000;
+            border-radius: 50%;
+            left: 50px;
+            transform: translateX(-50%);
+            z-index: 3;
+            box-shadow: 0 0 0 4px rgba(215, 232, 252, 0.3);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content {
+            width: calc(100% - 150px);
+            background: rgba(30, 30, 30, 0.6);
+            padding: 20px;
+            border: 2px solid #444;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+            margin-left: 20px;
+            transform-origin: left center;
+        }
+
+        /* Add slight rotation for staggered effect */
+        .timeline-item:nth-child(odd) .timeline-content {
+            transform: rotate(-1deg);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            transform: rotate(1deg);
+        }
+
+        .timeline-item:nth-child(3n) .timeline-content {
+            transform: rotate(-0.5deg);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border-style: solid;
+            left: -12px;
+            border-width: 12px 12px 12px 0;
+            border-color: transparent #444 transparent transparent;
+        }
+
+        /* Change content hover effect for staggered items */
+        .timeline-item:hover .timeline-content {
+            transform: rotate(0deg) scale(1.02);
+            background: rgba(40, 40, 40, 0.8);
+            border-color: #00ff00;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+        }
+
+        /* Add pixelated "wires" connecting the timeline to each item */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                #555 2px,
+                #555 4px,
+                transparent 4px,
+                transparent 6px
+            );
+            top: 50%;
+            left: 60px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            width: 40px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            width: 70px;
+        }
+
+        .timeline-item:nth-child(3n)::before {
+            width: 90px;
+        }
+
+        .company-logo {
+            width: 70px;
+            height: 70px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #333;
+            padding: 5px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timeline-item:hover .company-logo {
+            transform: scale(1.1);
+            border-color: #00ff00;
+        }
+
+        .pixel-logo {
+            width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+            filter: grayscale(0.5) brightness(1.2);
+            transition: filter 0.3s ease;
+        }
+
+        .timeline-item:hover .pixel-logo {
+            filter: grayscale(0) brightness(1.3);
+        }
+
+        .timeline-details {
+            flex: 1;
+        }
+
+        .job-title {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .company-name {
+            font-size: 12px;
+            color: #d7e8fc;
+            margin-bottom: 8px;
+        }
+
+        .job-period {
+            font-size: 10px;
+            color: #00ff00;
+            padding: 2px 5px;
+            background: rgba(0, 255, 0, 0.1);
+            display: inline-block;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .experience-timeline {
+                padding: 20px;
+            }
+
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even),
+            .timeline-item:nth-child(3n) {
+                padding-left: 60px;
+                transform: translateY(0);
+            }
+
+            .timeline-item::before,
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before,
+            .timeline-item:nth-child(3n)::before {
+                width: 30px;
+                left: 40px;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(3n) .timeline-content {
+                width: calc(100% - 40px);
+                transform: rotate(0deg);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .timeline-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .company-logo {
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -686,15 +955,15 @@
         <div class="content-section">
             <div class="section-title">BACKGROUND</div>
             <p class="about-text">
-                Hi, I’m Varun—a student at GT with a passion for bridging Biomedical Engineering and Computer Science. My journey so far spans academia, industry, and entrepreneurship, each offering unique challenges and invaluable lessons.
+                Hi, I'm Varun—a student at GT with a passion for bridging Biomedical Engineering and Computer Science. My journey so far spans academia, industry, and entrepreneurship, each offering unique challenges and invaluable lessons.
             </p>
 
             <p class="about-text">
-                In academia, I’ve immersed myself in research, working in four labs (including internationally) and contributing to the field with four published papers in journals and conferences. Through this, I’ve learned that solving meaningful problems requires patience, a willingness to ask difficult questions, and the discipline to pursue answers no matter how elusive they may be.
+                In academia, I've immersed myself in research, working in four labs (including internationally) and contributing to the field with four published papers in journals and conferences. Through this, I've learned that solving meaningful problems requires patience, a willingness to ask difficult questions, and the discipline to pursue answers no matter how elusive they may be.
             </p>
 
             <p class="about-text">
-                In industry, I’ve worked with leading medical device companies, where I’ve seen firsthand how ideas evolve from concepts to impactful solutions in the real world. The key lesson? Execution is everything. Brilliant ideas fall flat without the systems, teams, and persistence to bring them to life.
+                In industry, I've worked with leading medical device companies, where I've seen firsthand how ideas evolve from concepts to impactful solutions in the real world. The key lesson? Execution is everything. Brilliant ideas fall flat without the systems, teams, and persistence to bring them to life.
             </p>
 
             <p class="about-text">
@@ -702,8 +971,97 @@
             </p>
 
             <p class="about-text">
-                Today, I’m focused on solving technically challenging problems—like explainable AI for healthcare and AI-powered small molecule drug discovery—while also pursuing simpler, creative endeavors like building fun, beautiful consumer apps. Whether it’s tackling complexity or crafting simplicity, I’m driven by the same goal: to create things that make a real difference.
+                Today, I'm focused on solving technically challenging problems—like explainable AI for healthcare and AI-powered small molecule drug discovery—while also pursuing simpler, creative endeavors like building fun, beautiful consumer apps. Whether it's tackling complexity or crafting simplicity, I'm driven by the same goal: to create things that make a real difference.
             </p>
+
+            <div class="section-title">EXPERIENCE</div>
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="aws.png" alt="AWS" class="pixel-logo">
+                        </div>
+                        <div class="timeline-details">
+                            <div class="job-title">Software Development Engineer Intern</div>
+                            <div class="company-name">AWS</div>
+                            <div class="job-period">Start: May 2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="LavoLogo.png" alt="Lavo Life Sciences" class="pixel-logo">
+                        </div>
+                        <div class="timeline-details">
+                            <div class="job-title">Machine Learning Research Intern</div>
+                            <div class="company-name">Lavo Life Sciences (YC S23)</div>
+                            <div class="job-period">Jan 25 - Present</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="SomaLogo.png" alt="Soma Capital" class="pixel-logo">
+                        </div>
+                        <div class="timeline-details">
+                            <div class="job-title">Venture Scout</div>
+                            <div class="company-name">Soma Capital</div>
+                            <div class="job-period">Jan 25 - Present</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="edwards.png" alt="Edwards Life Sciences" class="pixel-logo">
+                        </div>
+                        <div class="timeline-details">
+                            <div class="job-title">Machine Learning Engineer Intern</div>
+                            <div class="company-name">Edwards Life Sciences</div>
+                            <div class="job-period">Aug 24 - Jan 25</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="edwards.png" alt="Edwards Life Sciences" class="pixel-logo">
+                        </div>
+                        <div class="timeline-details">
+                            <div class="job-title">Data Science Intern</div>
+                            <div class="company-name">Edwards Life Sciences</div>
+                            <div class="job-period">May 24 - Aug 24</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company-logo">
+                            <img src="Agro-Q.jpeg" alt="Agro-Q" class="pixel-logo">
+                        </div>
+                        <div class="timeline-details">
+                            <div class="job-title">Cofounder</div>
+                            <div class="company-name">Agro-Q LLC.</div>
+                            <div class="job-period">Aug 21 - Jun 22</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="section-title">AWARDS & RECOGNITION</div>
             <div class="awards-grid">
