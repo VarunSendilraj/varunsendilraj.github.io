@@ -4,715 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varun Sendilraj</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="shared.css">
+    
+    <!-- Page-specific Styles -->
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Press Start 2P', cursive;
-            background-color: #000 !important;
-            color: #fff;
-            height: 100%;
-            overflow: hidden;
+        .greeting {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
         }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 50px;
-            padding-right: 100px;
-            padding-left: 100px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .logo {
-            font-size: 20px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        main {
-            flex-grow: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .content {
-            max-width: 50%;
-            padding-right: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .content h1 {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .content p {
-            display: block;
-            margin-bottom: 20px;
-            width: 100%;
-            clear: both;
-        }
-
-        .content p::before {
-            content: "- ";
-            color: #ffffff;
-        }
-
+        
         h1 {
-            font-size: 36px;
-            margin-bottom: 30px;
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
         }
-
-        p {
-            font-size: 14px;
-            margin-bottom: 20px;
+        
+        .bio {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+        
+        .bio p {
+            margin-bottom: 24px;
+        }
+        
+        .bio p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .bio a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color-hover);
+            transition: all 0.3s ease;
+        }
+        
+        .bio a:hover {
+            border-bottom-color: var(--text-primary);
+            transform: translateY(-1px);
+        }
+        
+        .achievements {
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+        
+        .achievements h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievements li {
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+            font-size: 1rem;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
-
-        .image-container {
-            width: 40%;
-            aspect-ratio: 1 / 1;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .image-glitch {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .image-glitch img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        
+        .achievements li::before {
+            content: '•';
             position: absolute;
-            top: 0;
             left: 0;
+            color: var(--text-primary);
         }
-
-        .image-glitch img:nth-child(2) {
-            color: #0ff;
-            left: 2px;
-            animation: glitch-anim 2s infinite linear alternate-reverse;
+        
+        .achievements a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color-hover);
+            transition: all 0.3s ease;
         }
-
-        .image-glitch img:nth-child(3) {
-            color: #f0f;
-            left: -2px;
-            animation: glitch-anim 2s infinite linear alternate-reverse;
+        
+        .achievements a:hover {
+            border-bottom-color: var(--text-primary);
         }
-
-        .image-glitch:hover img:nth-child(2),
-        .image-glitch:hover img:nth-child(3) {
-            animation: none;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip-path: inset(80% 0 0 0); }
-            10% { clip-path: inset(10% 0 70% 0); }
-            20% { clip-path: inset(60% 0 20% 0); }
-            30% { clip-path: inset(30% 0 40% 0); }
-            40% { clip-path: inset(50% 0 30% 0); }
-            50% { clip-path: inset(20% 0 60% 0); }
-            60% { clip-path: inset(70% 0 10% 0); }
-            70% { clip-path: inset(40% 0 50% 0); }
-            80% { clip-path: inset(0 0 80% 0); }
-            90% { clip-path: inset(90% 0 0 0); }
-            100% { clip-path: inset(10% 0 90% 0); }
-        }
-
-        .pixel-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('image5.png');
-            background-repeat: repeat;
-        }
-
-        .social-icons {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
+        
+        .connect {
             display: flex;
-            flex-direction: column;
+            gap: 24px;
+            margin-top: 48px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
         }
-
-        .social-icons a {
-            margin-bottom: 20px;
-            color: #fff;
+        
+        .connect a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 18px;
-        }
-
-        /* Glitch effect styles */
-        .glitch {
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
             position: relative;
-            display: inline-block;
-            font-family: 'Press Start 2P', cursive;
+            padding: 8px 0;
         }
-
-        /* Scanline effect 
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255,255,255,0),
-                rgba(255,255,255,0) 50%,
-                rgba(0,0,0,0.2) 50%,
-                rgba(0,0,0,0.2)
-            );
-            background-size: 100% 4px;
-            z-index: 2;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-             */
-
-        /* Background glitch effect
-        .background-glitch {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #111;
-            z-index: 0;
-            overflow: hidden;
-        }
-             */
-
-        .background-glitch::before {
-            content: "";
+        
+        .connect a::before {
+            content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            animation: bg-glitch 2s linear infinite;
-        }
-
-        @keyframes bg-glitch {
-            0% {
-                background-position: 0 0, 0 0;
-                filter: hue-rotate(0deg);
-            }
-            10% {
-                background-position: -1px 0, 0 0;
-            }
-            20% {
-                background-position: 1px 0, 0 0;
-            }
-            30% {
-                background-position: 0 0, 0 0;
-            }
-            40% {
-                background-position: 0 -1px, 0 0;
-                filter: hue-rotate(20deg);
-            }
-            50% {
-                background-position: 0 1px, 0 0;
-            }
-            60% {
-                background-position: 1px 0, 0 0;
-            }
-            70% {
-                background-position: -1px 0, 0 0;
-            }
-            80% {
-                background-position: 0 0, 0 0;
-                filter: hue-rotate(-20deg);
-            }
-            90% {
-                background-position: 0 1px, 0 0;
-            }
-            100% {
-                background-position: 0 0, 0 0;
-                filter: hue-rotate(0deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-                margin-bottom: 40px;
-            }
-
-            .logo {
-                font-size: 16px;
-            }
-
-            nav {
-                width: 100%;
-            }
-
-            nav ul {
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            nav ul li {
-                margin-left: 0;
-            }
-
-            nav ul li a {
-                font-size: 12px;
-                padding: 8px 0;
-                display: block;
-            }
-
-            main {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .content {
-                max-width: 100%;
-                padding-right: 0;
-                text-align: left;
-            }
-
-            .image-container {
-                width: 80%;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 360px) {
-            nav ul li a {
-                font-size: 10px;
-            }
-        }
-
-        .pixel-icon {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 24px;
-            text-decoration: none;
-            color: #fff;
-            display: inline-block;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px #000;
-        }
-
-        .pixel-icon:hover {
-            transform: scale(1.1);
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .icon-img {
-            width: 24px;
-            height: 24px;
-            display: block;
-        }
-
-        .pixel-icon {
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .pixel-icon:hover {
-            transform: scale(1.1);
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .background-glitch {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: #000;
-            display: grid;
-            grid-template-columns: repeat(30, 1fr);
-            grid-template-rows: repeat(30, 1fr);
-        }
-
-        .pixel {
-            background: #111;
+            left: -4px;
+            right: -4px;
+            bottom: 0;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            z-index: -1;
         }
-
-        .pixel.active {
+        
+        .connect a:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        
+        .connect a:hover::before {
             opacity: 1;
+            transform: translateY(-1px);
         }
-
-        .pixel:nth-child(3n) {
-            background: #222;
-        }
-
-        .pixel:nth-child(7n) {
-            background: #333;
-        }
-
-        /* Add these cursor styles after your existing styles */
-        body {
-            cursor: none; /* Hide the default cursor */
-        }
-
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #fff;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference; /* This creates the contrast effect */
-            transition: transform 0.2s ease;
-        }
-
-        /* Add hover effect size change */
-        .custom-cursor.hover {
-            transform: scale(1.5);
-        }
-
-        /* Make sure all clickable elements show the right cursor behavior */
-        a, button, .pixel-icon, .image-glitch {
-            cursor: none;
-        }
-
-        /* Add this CSS in the style section, after your existing styles */
-        ::selection {
-            background-color: #00ff00; /* Retro terminal green */
-            color: #000000;
-        }
-
-        ::-moz-selection {
-            background-color: #00ff00; /* For Firefox */
-            color: #000000;
-        }
-
-        /* Add these new styles */
-        p, h1, .content {
-            transition: color 0.2s ease;
-        }
-
-        p:hover, h1:hover, .content:hover {
-            color: #00ff00;
-            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-        }
-
-        /* Add these styles in the <style> section */
-        .perspective-container {
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-        }
-
-        .perspective-image {
-            transform-style: preserve-3d;
-            backface-visibility: hidden;
-        }
-
-        .image-container {
-            perspective: 1000px;
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .bio {
+                font-size: 1rem;
+            }
+            
+            .connect {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="pixel-grid"></div>
-    <div class="background-glitch"></div>
-    <div class="scanline"></div>
+    <!-- Cursor elements will be added by shared.js -->
+    
     <div class="container">
-        <header>
-            <div class="logo glitch" data-text="Varun Sendilraj">Varun Sendilraj</div>
-            <nav>
+        <div class="hero">
+            <p class="greeting">hey 👋 i'm</p>
+            <h1>varun sendilraj</h1>
+            
+            <div class="bio">
+                <p>i'm 21, based in <a href="https://discoveratlanta.com/">atl</a>.</p>
+                                
+                <p>i'm passionate about building tools that can help improve human experiences.</p>
+                <p>whether thats through creating devices for healthcare, desiging elegant user experiences for apps, or even building communities to empower people worldwide.</p>
+            </div>
+            <div class="achievements">
+                <h3>at this point in time, i'm:</h3>
                 <ul>
-                    <li><a href="about.html" class="glitch" data-text="ABOUT">ABOUT</a></li>
-                    <li><a href="projects.html" class="glitch" data-text="PROJECTS">PROJECTS</a></li>
-                    <li><a href="https://drive.google.com/file/d/1bLL7bD3M1RsunmkkcpPzCjG_r4WYi86v/view?usp=sharing" class="glitch" data-text="ESSAYS">RESUME</a></li>
+                    <li>studying cs + bme at <a href="https://www.gatech.edu/">gatech</a></li>
+                    <li>scouting at <a href="https://somacap.com/">soma capital</a></li>
+                    <li>creating the resilience layer for multi-agent systems at <a href="https://amirmohan.github.io/">amir lab</a></li>
                 </ul>
-            </nav>
-        </header>
-        <main>
-            <div class="content">
-                <h1 class="glitch" data-text="HI I'M VARUN..."><u>HI I'M VARUN...</u></h1>
-                <p class="glitch" data-text="I'M A 21 YEAR OLD AI TINKERER BASED IN ATL,">I'M A 21 YEAR OLD AI DEVELOPER BASED IN ATL</p>
-                <p class="glitch" data-text="STUDYING BME + CS AT GATECH">STUDYING BME + CS AT GATECH</p>
-                <p class="glitch" data-text="CURRENTLY:">CURRENTLY EXPLORING THE INTERSECTION OF AI AND MEDICINE</p>
             </div>
-            <div class="image-container">
-                <div class="image-glitch perspective-container">
-                    <img src="image 6.png" alt="Varun Sendilraj" class="perspective-image">
-                    <img src="image 5.png" alt="Varun Sendilraj" class="perspective-image">
-                    <img src="image 6.png" alt="Varun Sendilraj" class="perspective-image">
-                </div>
+            
+            <div class="achievements">
+                <h3>a few things i've done:</h3>
+                <ul>
+                    <li>built award winning frugal/accessible biotech equipment</li>
+                    <li>created ai platforms for healthcare diagnostics and patient outcomes</li>
+                    <li>award winner at the 2024 int'l <a href="https://moody-challenge.physionet.org/">physionet ml challenge</a></li>
+                    <li>trained ml models for drug formulation at <a href="https://lavo.ai/">lavo life sciences (yc24)</a></li>
+                    <li>designed scalable high volume data pipelines & dashboards at <a href="https://aws.amazon.com/">aws</a></li>
+                    <li>founded the us's largest healthcare pitch competition backed by <a href="https://www.mayoclinic.org/">mayo clinic</a></li>
+                </ul>
             </div>
-        </main>
-        <div class="social-icons">
-            <a href="https://x.com/vsendilraj_" id="twitter" class="glitch pixel-icon">
-                <img src="Twitter icon.png" alt="Twitter" class="icon-img">
-            </a>
-            <a href="https://www.linkedin.com/in/varun-sendilraj/" id="linkedin" class="glitch pixel-icon">
-                <img src="Linkedin icon.png" alt="LinkedIn" class="icon-img">
-            </a>
-            <a href="https://github.com/VarunSendilraj" id="github" class="glitch pixel-icon">
-                <img src="Github icon.png" alt="GitHub" class="icon-img">
-            </a>
+            
+            <div class="bio">
+                <p>this is the place where i document my journey through code, personal reflections, and solving problems that fascinate me.</p>
+
+                <p>feel free to reach out about anything. i'm energized by interesting conversations, diverse perspectives, and new ideas.</p>
+            </div>
+            
+            <div class="connect">
+                <a href="mailto:vsendilraj3@gatech.edu">email</a>
+                <a href="https://twitter.com/varunsendilraj">twitter</a>
+                <a href="https://www.linkedin.com/in/varun-sendilraj/">linkedin</a>
+                <a href="https://github.com/VarunSendilraj">github</a>
+                <a href="coming-soon">substack</a>
+                <a href="https://scholar.google.com/citations?user=bMzSu44AAAAJ&hl=en">google scholar</a>
+            </div>
         </div>
     </div>
+
+    <!-- Shared JavaScript -->
+    <script src="shared.js"></script>
+    <script src="components.js"></script>
+    
+    <!-- Page Initialization -->
     <script>
-        function createPixelImage() {
-            const imageContainer = document.getElementById('pixelImage');
-            const pixelSize = 10;
-            const width = imageContainer.offsetWidth;
-            const height = imageContainer.offsetHeight;
-            const cols = Math.floor(width / pixelSize);
-            const rows = Math.floor(height / pixelSize);
-
-            imageContainer.innerHTML = ''; // Clear existing pixels
-
-            for (let y = 0; y < rows; y++) {
-                for (let x = 0; x < cols; x++) {
-                    const pixel = document.createElement('div');
-                    pixel.style.position = 'absolute';
-                    pixel.style.left = `${x * pixelSize}px`;
-                    pixel.style.top = `${y * pixelSize}px`;
-                    pixel.style.width = `${pixelSize}px`;
-                    pixel.style.height = `${pixelSize}px`;
-                    pixel.style.backgroundColor = getPixelColor(x, y);
-                    imageContainer.appendChild(pixel);
-                }
-            }
-        }
-
-        function getPixelColor(x, y) {
-            // This is a placeholder function. You should implement your own logic
-            // to create the pixel art image of the person in the design.
-            const shade = Math.floor(Math.random() * 256);
-            return `rgb(${shade}, ${shade}, ${shade})`;
-        }
-
-        window.addEventListener('load', createPixelImage);
-        window.addEventListener('resize', createPixelImage);
-
-        // Glitch effect for text
-        function applyGlitchEffect() {
-            const glitchElements = document.querySelectorAll('.glitch');
-            glitchElements.forEach(element => {
-                const originalText = element.textContent;
-                element.setAttribute('data-text', originalText);
-            });
-        }
-
-        applyGlitchEffect();
-
-        // Add this after your existing scripts
-        function createPixelBackground() {
-            const background = document.querySelector('.background-glitch');
-            background.innerHTML = '';
-            
-            // Create 900 pixels (30x30 grid) instead of 2500
-            for (let i = 0; i < 900; i++) {
-                const pixel = document.createElement('div');
-                pixel.className = 'pixel';
-                background.appendChild(pixel);
-            }
-            
-            function animatePixels() {
-                const pixels = document.querySelectorAll('.pixel');
-                pixels.forEach(pixel => {
-                    // Reduce chance of pixel activation from 2% to 0.3%
-                    if (Math.random() < 0.003) {
-                        pixel.classList.toggle('active');
-                        
-                        // Increase the duration range for pixels to stay visible
-                        setTimeout(() => {
-                            pixel.classList.remove('active');
-                        }, Math.random() * 2000 + 500); // Random duration between 500ms and 2500ms
-                    }
-                });
-                
-                requestAnimationFrame(animatePixels);
-            }
-            
-            animatePixels();
-        }
-
-        // Initialize the background
-        createPixelBackground();
-
-        // Add this function after your existing scripts
-        function createCharacterGlitch(element) {
-            const originalText = element.textContent;
-            const glitchCharacters = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`';
-            let isGlitching = false;
-
-            function glitchText() {
-                // Reduced probability (0.003 instead of 0.01) to create longer delays between glitches
-                if (Math.random() < 0.003 && !isGlitching) { // ~4 second average delay between glitches
-                    isGlitching = true;
-                    let glitchDuration = 0;
-                    const maxDuration = 10;
-                    
-                    const glitchInterval = setInterval(() => {
-                        if (glitchDuration >= maxDuration) {
-                            clearInterval(glitchInterval);
-                            element.textContent = originalText;
-                            isGlitching = false;
-                            
-                            // Force a minimum delay before the next possible glitch
-                            setTimeout(() => {
-                                isGlitching = false;
-                            }, 4000); // 4 second minimum delay
-                            return;
-                        }
-
-                        let glitchedText = '';
-                        for (let char of originalText) {
-                            if (char === ' ' || char === '-' || char === '.') {
-                                glitchedText += char;
-                            } else if (Math.random() < 0.3) {
-                                glitchedText += glitchCharacters[Math.floor(Math.random() * glitchCharacters.length)];
-                            } else {
-                                glitchedText += char;
-                            }
-                        }
-                        element.textContent = glitchedText;
-                        glitchDuration++;
-                    }, 50);
-                }
-                requestAnimationFrame(glitchText);
-            }
-
-            glitchText();
-        }
-
-        // Add this to your existing script section, after createPixelBackground();
-        function initializeTextGlitches() {
-            // Select the specific elements to apply the glitch effect
-            const glitchTexts = [
-                document.querySelector('h1.glitch'),  // "HI I'M VARUN..."
-                ...document.querySelectorAll('p.glitch')  // All paragraph elements
-            ];
-
-            glitchTexts.forEach(element => {
-                if (element) {
-                    createCharacterGlitch(element);
-                }
-            });
-        }
-
-        // Initialize the text glitch effects
-        initializeTextGlitches();
-
-        // Add this new cursor code after your existing scripts
-        function initializeCustomCursor() {
-            // Create cursor element
-            const cursor = document.createElement('div');
-            cursor.classList.add('custom-cursor');
-            document.body.appendChild(cursor);
-
-            // Update cursor position
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 10 + 'px';
-                cursor.style.top = e.clientY - 10 + 'px';
-            });
-
-            // Add hover effect for interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .pixel-icon, .image-glitch');
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    cursor.classList.add('hover');
-                });
-                element.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('hover');
-                });
-            });
-        }
-
-        // Initialize the custom cursor
-        initializeCustomCursor();
-
-        // Add this new function to your script section
-        function initializePerspectiveEffect() {
-            const container = document.querySelector('.perspective-container');
-            const bounds = container.getBoundingClientRect();
-            
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-                
-                // Calculate the relative position of the mouse to the center of the container
-                const centerX = bounds.left + bounds.width / 2;
-                const centerY = bounds.top + bounds.height / 2;
-                
-                // Calculate the rotation angles (limited to ±15 degrees)
-                const rotateY = ((mouseX - centerX) / bounds.width) * 15;
-                const rotateX = -((mouseY - centerY) / bounds.height) * 15;
-                
-                // Apply the transformation
-                container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-            
-            // Reset transform when mouse leaves the window
-            document.addEventListener('mouseleave', () => {
-                container.style.transform = 'rotateX(0) rotateY(0)';
-            });
-            
-            // Update bounds on window resize
-            window.addEventListener('resize', () => {
-                bounds = container.getBoundingClientRect();
-            });
-        }
-
-        // Add this line after initializeCustomCursor();
-        initializePerspectiveEffect();
+        // Initialize the page with components
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page is ready - components will auto-initialize via ComponentManager
+            console.log('Homepage loaded with shared components');
+        });
     </script>
 </body>
 </html>

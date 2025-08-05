@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thoughts - Varun Sendilraj</title>
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="shared.css">
+    
+    <!-- Page-specific Styles -->
+    <style>
+        .container {
+            max-width: 700px;
+        }
+        
+        /* Thoughts List */
+        .thoughts-list {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+        
+        .thought-item {
+            margin-bottom: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--border-color);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .thought-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .thought-number {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+        
+        .thought-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .thought-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        
+        .thought-description p {
+            margin-bottom: 16px;
+        }
+        
+        .thought-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Staggered animations for thought items */
+        .thought-item:nth-child(1) { animation-delay: 0.5s; }
+        .thought-item:nth-child(2) { animation-delay: 0.6s; }
+        .thought-item:nth-child(3) { animation-delay: 0.7s; }
+        .thought-item:nth-child(4) { animation-delay: 0.8s; }
+        .thought-item:nth-child(5) { animation-delay: 0.9s; }
+        .thought-item:nth-child(6) { animation-delay: 1.0s; }
+        .thought-item:nth-child(7) { animation-delay: 1.1s; }
+        .thought-item:nth-child(8) { animation-delay: 1.2s; }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .thought-number {
+                font-size: 1.25rem;
+            }
+            
+            .thought-title {
+                font-size: 1.1rem;
+            }
+            
+            .thought-description {
+                font-size: 0.95rem;
+            }
+            
+            .thought-item {
+                margin-bottom: 40px;
+                padding-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">thoughts</h1>
+            <p class="page-subtitle">
+                personal beliefs and perspectives that shape how i see the world.
+                these evolve as i grow, but here's where i stand today.
+            </p>
+        </div>
+        
+        <div class="thoughts-list">
+            <div class="thought-item">
+                <div class="thought-number">01</div>
+                <h2 class="thought-title">dont chase fame, chase mastery</h2>
+                <div class="thought-description">
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+            
+            <div class="thought-item">
+                <div class="thought-number">02</div>
+                <h2 class="thought-title">work backwards</h2>
+                <div class="thought-description">
+                    <p>whenever</p>
+                    <p>the best developers i know are the ones who ask the most questions, admit when they don't know something, and are always eager to learn from others.</p>
+                </div>
+            </div>
+            
+            <div class="thought-item">
+                <div class="thought-number">03</div>
+                <h2 class="thought-title">chase faliure</h2>
+                <div class="thought-description">
+                    <p>building something meaningful takes time. there's beauty in the iterative process—the failed experiments, the late-night debugging sessions, the moments of breakthrough.</p>
+                    <p>success isn't just the final product; it's everything you learn and become along the way.</p>
+                </div>
+            </div>
+            
+            <div class="thought-item">
+                <div class="thought-number">04</div>
+                <h2 class="thought-title">take calculated risks early</h2>
+                <div class="thought-description">
+                    <p>ai and automation should augment human capabilities, not replace human connection. the goal isn't to make humans obsolete—it's to free us up to do more meaningful, creative work.</p>
+                    <p>technology works best when it feels invisible, when it seamlessly integrates into how people naturally want to work and live.</p>
+                </div>
+            </div>
+            
+            <div class="thought-item">
+                <div class="thought-number">05</div>
+                <h2 class="thought-title">work hard, and dont forget to show off</h2>
+                <div class="thought-description">
+                    <p>knowledge grows when it's shared. whether it's writing about a solution you found, open-sourcing a useful tool, or mentoring someone starting their journey—sharing makes the entire community stronger.</p>
+                    <p>we all stand on the shoulders of those who shared their knowledge freely. it's our responsibility to do the same for the next generation.</p>
+                </div>
+            </div>
+            <div class="thought-item">
+                <div class="thought-number">06</div>
+                <h2 class="thought-title">learn to be bored</h2>
+                <div class="thought-description">
+                    <p>ai and automation should augment human capabilities, not replace human connection. the goal isn't to make humans obsolete—it's to free us up to do more meaningful, creative work.</p>
+                    <p>technology works best when it feels invisible, when it seamlessly integrates into how people naturally want to work and live.</p>
+                </div>
+            </div>
+            <div class="thought-item">
+                <div class="thought-number">07</div>
+                <h2 class="thought-title">never ask for permission, ask forgiveness</h2>
+                <div class="thought-description">
+                    <p>ai and automation should augment human capabilities, not replace human connection. the goal isn't to make humans obsolete—it's to free us up to do more meaningful, creative work.</p>
+                    <p>technology works best when it feels invisible, when it seamlessly integrates into how people naturally want to work and live.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared JavaScript -->
+    <script src="shared.js"></script>
+    <script src="components.js"></script>
+    
+    <!-- Page Initialization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Components will auto-initialize, but we can do page-specific setup here
+            console.log('Thoughts page loaded with shared components');
+        });
+    </script>
+</body>
+</html>
