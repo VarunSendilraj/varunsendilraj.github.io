@@ -9,9 +9,9 @@ class NavbarComponent {
                 url: 'index.html',
                 icon: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9,22 9,12 15,12 15,22'
             },
-            'thoughts': {
-                name: 'thoughts',
-                url: 'thoughts.html',
+            'beliefs': {
+                name: 'beliefs',
+                url: 'beliefs.html',
                 icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14,2 14,8 20,8 M16 13H8 M16 17H8 M10,9 9,9 8,9'
             },
             'projects': {
@@ -121,8 +121,8 @@ class NavbarComponent {
             case 'index.html':
             case '':
                 return 'home';
-            case 'thoughts.html':
-                return 'thoughts';
+            case 'beliefs.html':
+                return 'beliefs';
             case 'projects.html':
                 return 'projects';
             default:

@@ -257,22 +257,27 @@ nav {
         position: fixed;
         top: auto;
         bottom: 32px;
-        right: 50%;
-        transform: translateX(50%);
+        left: 50%;
+        transform: translateX(-50%);
         flex-direction: row;
         gap: 16px;
         animation: fadeInUp 0.8s ease 0.5s forwards;
+        z-index: 1000;
+        width: auto;
+        justify-content: center;
+        align-items: center;
     }
     
     .nav-icon {
         width: 44px;
         height: 44px;
+        flex-shrink: 0;
     }
     
     .nav-tooltip {
         bottom: 56px;
-        right: 50%;
-        transform: translateX(50%);
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 0;
         visibility: hidden;
     }
@@ -280,15 +285,15 @@ nav {
     .nav-tooltip::after {
         top: auto;
         bottom: -4px;
-        right: 50%;
-        transform: translateX(50%);
+        left: 50%;
+        transform: translateX(-50%);
         border-left: 4px solid transparent;
         border-right: 4px solid transparent;
         border-top: 4px solid var(--tooltip-bg);
     }
     
     .nav-item:hover .nav-tooltip {
-        transform: translateX(50%) translateY(-4px);
+        transform: translateX(-50%) translateY(-4px);
     }
     
     .cursor-dot,
