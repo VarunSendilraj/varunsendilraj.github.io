@@ -1,231 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varun Sendilraj</title>
-    
-    <!-- Shared Styles -->
-    <link rel="stylesheet" href="shared.css">
-    
-    <!-- Page-specific Styles -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        .greeting {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-bottom: 8px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.1s forwards;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            margin-bottom: 32px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-        
-        .bio {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            font-weight: 400;
-            line-height: 1.7;
-            margin-bottom: 32px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.3s forwards;
-        }
-        
-        .bio p {
-            margin-bottom: 24px;
-        }
-        
-        .bio p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .bio a {
-            color: var(--text-primary);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border-color-hover);
-            transition: all 0.3s ease;
-        }
-        
-        .bio a:hover {
-            border-bottom-color: var(--text-primary);
-            transform: translateY(-1px);
-        }
-        
-        .achievements {
-            margin: 40px 0;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-        
-        .achievements h3 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .achievements ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .achievements li {
-            margin-bottom: 8px;
-            padding-left: 16px;
-            position: relative;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .achievements li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--text-primary);
-        }
-        
-        .achievements a {
-            color: var(--text-primary);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border-color-hover);
-            transition: all 0.3s ease;
-        }
-        
-        .achievements a:hover {
-            border-bottom-color: var(--text-primary);
-        }
-        
-        .connect {
-            display: flex;
-            gap: 24px;
-            margin-top: 48px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.5s forwards;
-        }
-        
-        .connect a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 8px 0;
-        }
-        
-        .connect a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -4px;
-            right: -4px;
-            bottom: 0;
-            background: var(--bg-tertiary);
-            border-radius: 4px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-        
-        .connect a:hover {
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-        
-        .connect a:hover::before {
-            opacity: 1;
-            transform: translateY(-1px);
-        }
-        
-        /* Mobile adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .bio {
-                font-size: 1rem;
-            }
-            
-            .connect {
-                flex-wrap: wrap;
-                gap: 16px;
-            }
-        }
+      html { background: #fafafa; color-scheme: light; }
+      html[data-theme="dark"] { background: #1e1e1e; color-scheme: dark; }
     </style>
-</head>
-<body>
-    <!-- Cursor elements will be added by shared.js -->
-    
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+          var root = document.documentElement;
+          root.setAttribute("data-theme", theme);
+          root.style.colorScheme = theme;
+          root.classList.add("page-loading");
+        } catch (e) {}
+      })();
+    </script>
+    <title>Varun Sendilraj</title>
+    <link rel="stylesheet" href="shared.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="hero">
-            <p class="greeting">hey 👋 i'm</p>
-            <h1>varun sendilraj</h1>
-            
-            <div class="bio">
-                <p>i'm 21, based in <a href="https://discoveratlanta.com/">atl</a>.</p>
-                                
-                <p>i'm passionate about building tools that can help improve human experiences.</p>
-                <p>whether thats through creating devices for healthcare, desiging elegant user experiences, or even building communities to empower people worldwide.</p>
-            </div>
-            <div class="achievements">
-                <h3>at this point in time, i'm:</h3>
-                <ul>
-                    <li>studying cs + bme at <a href="https://www.gatech.edu/">gatech</a></li>
-                    <li>scouting at <a href="https://somacap.com/">soma capital</a></li>
-                    <li>creating the resilience layer for multi-agent systems at <a href="https://amirmohan.github.io/">amir lab</a></li>
-                </ul>
-            </div>
-            
-            <div class="achievements">
-                <h3>a few things i've done:</h3>
-                <ul>
-                    <li>built award winning frugal/accessible biotech equipment</li>
-                    <li>created ai platforms for healthcare diagnostics and patient outcomes</li>
-                    <li>award winner at the 2024 int'l <a href="https://moody-challenge.physionet.org/">physionet ml challenge</a></li>
-                    <li>trained ml models for drug formulation at <a href="https://lavo.ai/">lavo life sciences (yc24)</a></li>
-                    <li>designed scalable high volume data pipelines & dashboards at <a href="https://aws.amazon.com/">aws</a></li>
-                    <li>founded the us's largest healthcare pitch competition backed by <a href="https://www.mayoclinic.org/">mayo clinic</a></li>
-                </ul>
-            </div>
-            
-            <div class="bio">
-                <p>this is the place where i document my journey through code, personal reflections, and solving problems that fascinate me.</p>
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html" class="active">home</a>
+          <a href="blog/">blog</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          id="theme-toggle"
+          aria-label="Toggle dark mode"
+        >
+          dark
+        </button>
+      </header>
 
-                <p>feel free to reach out about anything. i'm energized by interesting conversations, diverse perspectives, and new ideas.</p>
-            </div>
-            
-            <div class="connect">
-                <a href="mailto:vsendilraj3@gatech.edu">email</a>
-                <a href="https://x.com/vsendilraj_">twitter</a>
-                <a href="https://www.linkedin.com/in/varun-sendilraj/">linkedin</a>
-                <a href="https://github.com/VarunSendilraj">github</a>
-                <a href="coming-soon">substack</a>
-                <a href="https://scholar.google.com/citations?user=bMzSu44AAAAJ&hl=en">google scholar</a>
-            </div>
+      <main>
+        <p class="greeting">hey 👋 i'm</p>
+        <h1 class="name">Varun Sendilraj</h1>
+
+        <div class="prose">
+          <p>
+            i'm passionate about building tools that help improve human
+            experience.
+          </p>
+          
+          <p>
+            currently, i'm joining <a href="https://x.ai/">xAI</a> as a member
+            of technical staff on the model capabilities team.
+          </p>
+
+          <p>
+            i've previously built award winning accessible biotech equipment, AI systems for
+            healthcare diagnostics used in hospitals, and deep learning models
+            for drug discovery.
+          </p>
+
+          <p>
+              i also had the lucky opportunity to found the <a href="https://pitchrx.framer.website/">largest healthcare pitch competition in the US</a> and spent time scouting at <a href="https://somacap.com/">soma capital</a> 
+          </p>
+          <p>
+            if you'd like to hear more about my path, feel free to read about
+            <a href="journey.html">my journey</a>.
+          </p>
+
+          <p>
+            i write on my <a href="blog/">blog</a> from time to time; for
+            publications, see my
+            <a
+              href="https://scholar.google.com/citations?user=bMzSu44AAAAJ&hl=en"
+              >google scholar</a
+            >.
+          </p>
+
+          <p>feel free to reach out - i'm always happy to chat.</p>
         </div>
+
+        <p class="footer-links">
+          <a href="mailto:vsendilraj3@gatech.edu">email</a
+          ><span class="sep">·</span>
+          <a href="https://x.com/vsendilraj_">twitter</a
+          ><span class="sep">·</span>
+          <a href="https://www.linkedin.com/in/varun-sendilraj/">linkedin</a
+          ><span class="sep">·</span>
+          <a href="https://github.com/VarunSendilraj">github</a
+          ><span class="sep">·</span>
+          <a href="https://scholar.google.com/citations?user=bMzSu44AAAAJ&hl=en"
+            >scholar</a
+          >
+        </p>
+      </main>
     </div>
 
-    <!-- Shared JavaScript -->
     <script src="shared.js"></script>
-    <script src="components.js"></script>
-    
-    <!-- Page Initialization -->
-    <script>
-        // Initialize the page with components
-        document.addEventListener('DOMContentLoaded', () => {
-            // Page is ready - components will auto-initialize via ComponentManager
-            console.log('Homepage loaded with shared components');
-        });
-    </script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html { background: #fafafa; color-scheme: light; }
+        html[data-theme="dark"] { background: #1e1e1e; color-scheme: dark; }
+    </style>
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+                var root = document.documentElement;
+                root.setAttribute("data-theme", theme);
+                root.style.colorScheme = theme;
+                root.classList.add("page-loading");
+            } catch (e) {}
+        })();
+    </script>
+    <title>Blog — Varun Sendilraj</title>
+    <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <nav class="site-nav" aria-label="Primary">
+                <a href="../index.html">home</a>
+                <a href="index.html" class="active">blog</a>
+            </nav>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">dark</button>
+        </header>
+
+        <main>
+            <h1 class="page-title">blog</h1>
+            <p class="page-intro">writing on things i'm learning and thinking about.</p>
+
+            <!-- Add posts below as <li> items when ready:
+            <ul class="post-list">
+                <li>
+                    <a href="posts/example.html">post title</a>
+                    <span class="post-date">may 2026</span>
+                </li>
+            </ul>
+            -->
+            <p class="empty-state">nothing here yet. check back soon.</p>
+        </main>
+    </div>
+
+    <script src="../shared.js"></script>
+</body>
+</html>

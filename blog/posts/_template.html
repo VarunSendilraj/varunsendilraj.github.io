@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html { background: #fafafa; color-scheme: light; }
+        html[data-theme="dark"] { background: #1e1e1e; color-scheme: dark; }
+    </style>
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+                var root = document.documentElement;
+                root.setAttribute("data-theme", theme);
+                root.style.colorScheme = theme;
+                root.classList.add("page-loading");
+            } catch (e) {}
+        })();
+    </script>
+    <title>Post title — Varun Sendilraj</title>
+    <link rel="stylesheet" href="../../shared.css">
+    <style>
+        .post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <nav class="site-nav" aria-label="Primary">
+                <a href="../../index.html">home</a>
+                <a href="../index.html">blog</a>
+            </nav>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">dark</button>
+        </header>
+
+        <main>
+            <a href="../index.html" class="back-link">← blog</a>
+
+            <h1 class="page-title">Post title</h1>
+            <p class="post-meta">may 15, 2026</p>
+
+            <article class="prose">
+                <p>your post content goes here.</p>
+            </article>
+        </main>
+    </div>
+
+    <script src="../../shared.js"></script>
+</body>
+</html>
