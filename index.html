@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      html { background: #fafafa; color-scheme: light; }
-      html[data-theme="dark"] { background: #1e1e1e; color-scheme: dark; }
+      html {
+        background: #fafafa;
+        color-scheme: light;
+      }
+      html[data-theme="dark"] {
+        background: #1e1e1e;
+        color-scheme: dark;
+      }
     </style>
     <script>
       (function () {
         try {
-          var theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+          var theme =
+            localStorage.getItem("theme") === "dark" ? "dark" : "light";
           var root = document.documentElement;
           root.setAttribute("data-theme", theme);
           root.style.colorScheme = theme;
@@ -47,20 +54,25 @@
             i'm passionate about building tools that help improve human
             experience.
           </p>
-          
+
           <p>
-            currently, i'm joining <a href="https://x.ai/">xAI</a> as a member
-            of technical staff on the model capabilities team.
+            currently, i'm an mts at <a href="https://x.ai/">xAI</a> working on
+            pretraining.
           </p>
 
           <p>
-            i've previously built award winning accessible biotech equipment, AI systems for
-            healthcare diagnostics used in hospitals, and deep learning models
-            for drug discovery.
+            i've previously built award winning accessible biotech equipment, AI
+            systems for healthcare diagnostics used in hospitals, and deep
+            learning models for drug discovery.
           </p>
 
           <p>
-              i also had the lucky opportunity to found the <a href="https://pitchrx.framer.website/">largest healthcare pitch competition in the US</a> and spent time scouting at <a href="https://somacap.com/">soma capital</a> 
+            i also had the lucky opportunity to found the
+            <a href="https://pitchrx.framer.website/"
+              >largest healthcare pitch competition in the US</a
+            >
+            and spent time scouting at
+            <a href="https://somacap.com/">soma capital</a>
           </p>
           <p>
             if you'd like to hear more about my path, feel free to read about
